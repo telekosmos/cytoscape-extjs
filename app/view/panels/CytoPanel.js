@@ -71,7 +71,13 @@ Ext.define('APP.view.panels.CytoPanel', {
 		xtype: 'cytoscape',
 		// html: 'cytoscape here',
 		networkModel: graphModel,
-		flex: 8
+		flex: 8,
+		visualStyle: {
+			nodes: {
+				selectionGlowColor: "#FF151A"
+			//	borderColor: "red"
+			}
+		}
 	}, {
 		xtype: 'container',
 		// html: 'controls here',
@@ -118,6 +124,5 @@ Ext.define('APP.view.panels.CytoPanel', {
 		var textbox = controls.down('textbox-btn');
 		textbox.hide();
 
-		console.log("cytopanel panel gatherer...");
 	}
 })
