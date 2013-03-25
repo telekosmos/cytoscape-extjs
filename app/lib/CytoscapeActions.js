@@ -1,7 +1,7 @@
 /**
  * This is a lib with static methods to operate on a cytoscape instance
  */
-Ext.define('App.lib.CytoscapeActions', {
+Ext.define('APP.lib.CytoscapeActions', {
 	statics:{
 		/**
 		 * Creates a new node in the flash cytoscape.
@@ -22,13 +22,27 @@ Ext.define('App.lib.CytoscapeActions', {
 			}
 
 			nodeOpts = {
-				id: nodeId,
+				id: nodeId.toString(),
 				label: nodeLabel,
 				payload: nodeData.payload
 			};
 
 			vis.addNode(20, 20, nodeOpts);
-		}
+		},
 
-	} // EO statics
+		toString: function() {
+			console.log("App.lib.CytoscapeActions class");
+		}
+	}, // EO statics
+
+
+
+	config: {},
+
+	constructor: function (config) {
+		this.initConfig(config);
+
+		return this;
+	}
+
 })

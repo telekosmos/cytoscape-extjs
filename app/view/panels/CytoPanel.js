@@ -8,6 +8,9 @@ var graphModel = {
 		}, {
 			name: "foo",
 			type: "string"
+		}, {
+			name: 'payload',
+			type: 'object'
 		}],
 		edges: [{
 			name: "label",

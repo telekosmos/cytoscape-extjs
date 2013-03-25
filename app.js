@@ -34,5 +34,6 @@ Ext.application({
 	],
 
 	autoCreateViewport:true
+
 });
 

@@ -42,6 +42,12 @@ Ext.define('APP.view.Viewport', {
 			height: 100,
 			xtype: 'southpanel'
 		}
-	]
+	],
+
+	initComponent: function() {
+		console.log('Viewport initComponent');
+
+		this.callParent(arguments);
+	}
 });
 
