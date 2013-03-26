@@ -42,6 +42,12 @@ var graphModel = {
 	}
 };
 
+
+var tip = Ext.create('Ext.tip.ToolTip', {
+	html: 'A very simple tooltip',
+	width: 200
+});
+
 /**
  * A panel with two containers: one container is the cytoscape itself, the
  * other controllers to do operations on the graph
@@ -74,7 +80,8 @@ Ext.define('APP.view.panels.CytoPanel', {
 		flex: 8,
 		visualStyle: {
 			nodes: {
-				selectionGlowColor: "#FF151A"
+				selectionGlowColor: "#FF151A",
+				tooltipText: "this fucking node"
 			//	borderColor: "red"
 			}
 		}
@@ -89,7 +96,16 @@ Ext.define('APP.view.panels.CytoPanel', {
 			xtype: 'button',
 			text: 'Gene',
 			id: 'btnGene',
-			margin: '20 0 5 10'
+			margin: '20 0 5 10',
+			listeners: {
+				mouseover: function(comp, ev, opts) {
+					var target = ev.target;
+
+					var top = target.offsetTop, left = target.offsetLeft;
+					console.log('btnGene mouseover: x='+left+', y='+top+'!!');
+					tip.showAt([left+100, top+100]);
+				}
+			}
 		}, {
 			xtype: 'button',
 			text: 'Compound',

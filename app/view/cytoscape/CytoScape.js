@@ -38,6 +38,7 @@ Ext.define('APP.view.cytoscape.CytoScape', {
 			panZoomControlVisible: false // hide pan zoom
 		});
 
+
 		this.vis.ready(function () {
 			console.log('ready function for graph...');
 			var _srcId;
@@ -45,6 +46,7 @@ Ext.define('APP.view.cytoscape.CytoScape', {
 			if (me.visualStyle !== undefined)
 				me.vis.visualStyle(me.visualStyle);
 
+			// Connect nodes through right button click
 			me.vis.addContextMenuItem('Connect node...','nodes', function(evt) {
 				var clickNodeToAddEdge = function (evt) {
 					if (_srcId != null) {
@@ -58,6 +60,16 @@ Ext.define('APP.view.cytoscape.CytoScape', {
 				me.vis.addListener("click", "nodes", clickNodeToAddEdge);
 			});
 
+
+			// Delete an edge
+			me.vis.addContextMenuItem('Delete edge', "edges", function(ev) {
+				var numEdges = me.vis.edges().length;
+				me.vis.removeEdge(ev.target.data.id, true);
+				console.log('edges before: '+numEdges+'; and later: '+me.vis.edges().length);
+			});
+
+
+			// select event for nodes. if two nodes selected, one after another, an arrow is displayed
 			me.vis.addListener('select', 'nodes', function(ev) {
 				me.selectionModel.push(ev.target);
 				console.log('select: event target: '+ev.target[0].data.id+'; selectionModel.length: '+me.selectionModel.length);
@@ -85,7 +97,35 @@ Ext.define('APP.view.cytoscape.CytoScape', {
 				console.log('deselect: event target: '+ev.target[0].data.id+'; selectionModel.length: '+me.selectionModel.length);
 			});
 
+			me.vis.addListener('mouseover', 'nodes', function(ev) {
+				console.log("on mouseover for "+ev.target.data.id);
 
+				var containerPos = me.getPosition();
+				var tipX = containerPos[0]+ev.target.x;
+				var tipY = containerPos[1]+ev.target.y;
+
+				tip.showAt([tipX, tipY]);
+			});
+
+
+			// 1. First, create a function and add it to the Visualization object.
+			me.vis["customTooltip"] = function (data) {
+				console.log('tooltip not displayed...');
+				var value = Math.round(100 * data["weight"]) + "%";
+				value=data['label']+' jejejeje';
+
+				return 'The position of this node is: ' +
+					'<span style="font-color:#990099;font-size:medium">' + value + '</span>';
+			};
+
+// 2. Now create a new visual style (or get the current one) and register
+//    the custom mapper to one or more visual properties:
+			var style = me.vis.visualStyle();
+			style.nodes.tooltipText = { customMapper: { functionName: "customTooltip" } },
+
+// 3. Finally set the visual style again:
+			me.vis.visualStyle(style);
+			me.vis.nodeTooltipsEnabled(false);
 
 			var nodeOne = {
 					id: '3',
@@ -106,6 +146,7 @@ Ext.define('APP.view.cytoscape.CytoScape', {
 			me.vis.addNode(150, 150, nodeTwo);
 
 			me.vis.addEdge({source: nodeOne.id, target: nodeTwo.id}, true);
+
 		}); // EO vis.ready
 
 
