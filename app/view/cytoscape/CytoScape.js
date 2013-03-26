@@ -60,7 +60,7 @@ Ext.define('APP.view.cytoscape.CytoScape', {
 
 			me.vis.addListener('select', 'nodes', function(ev) {
 				me.selectionModel.push(ev.target);
-				console.log('eventType: '+ev.type+'; selectionModel.length: '+me.selectionModel.length);
+				console.log('select: event target: '+ev.target[0].data.id+'; selectionModel.length: '+me.selectionModel.length);
 
 				// THIS IS TO ADD AN EDGE JOINING THE NODES STRAIGHT AWAY
 				if (me.selectionModel.length == 2) {
@@ -78,10 +78,11 @@ Ext.define('APP.view.cytoscape.CytoScape', {
 			}); // EO addListener select!!
 
 			me.vis.addListener("deselect", 'nodes', function (ev) {
-				var elemIndex = Ext.Array.indexOf(me.selectionModel, ev.target);
+//				var elemIndex = Ext.Array.indexOf(me.selectionModel, ev.target);
 
-				me.selectionModel = Ext.Array.remove(me.selectionModel, ev.target);
-				console.log('eventType: '+ev.type+'; selectionModel.length: '+me.selectionModel.length);
+//				me.selectionModel = Ext.Array.remove(me.selectionModel, ev.target);
+				me.selectionModel.length = 0;
+				console.log('deselect: event target: '+ev.target[0].data.id+'; selectionModel.length: '+me.selectionModel.length);
 			});
 
 
@@ -101,8 +102,8 @@ Ext.define('APP.view.cytoscape.CytoScape', {
 					}
 				};
 
-			me.vis.addNode(40, 20, nodeOne);
-			me.vis.addNode(150, 20, nodeTwo);
+			me.vis.addNode(40, 150, nodeOne);
+			me.vis.addNode(150, 150, nodeTwo);
 
 			me.vis.addEdge({source: nodeOne.id, target: nodeTwo.id}, true);
 		}); // EO vis.ready
