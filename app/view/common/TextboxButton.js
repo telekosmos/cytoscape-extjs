@@ -24,7 +24,6 @@ Ext.define('APP.view.common.TextboxButton', {
 	},
 
 	initComponent: function () {
-		console.log ('this.emptyText: '+this.getEmptyText());
 
 		this.items = [{
 			xtype: 'textfield',

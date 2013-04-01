@@ -10,7 +10,7 @@ Ext.define("APP.view.draw.DrawingCanvas", {
 
 	listeners: {
 		afterrender: function (comp, evOpts) {
-			console.log('afterRender drawingCanvas: '+comp.surface.items.length+' items');
+			// console.log('afterRender drawingCanvas: '+comp.surface.items.length+' items');
 			// this.initEvents();
 		},
 
@@ -18,7 +18,7 @@ Ext.define("APP.view.draw.DrawingCanvas", {
 		resize: function (draw, width, height) {
 
 			var drawCompSize = draw.getSize();
-			console.log ('resize on DrawingCanvas ('+draw.$className+') measures -> w:'+drawCompSize.width+'; h: '+drawCompSize.height);
+			// console.log ('resize on DrawingCanvas ('+draw.$className+') measures -> w:'+drawCompSize.width+'; h: '+drawCompSize.height);
 			/*
 			draw.surface.items.first().animate({
 				to: {
@@ -33,7 +33,7 @@ Ext.define("APP.view.draw.DrawingCanvas", {
 	},
 
 	initEvents: function () {
-		console.log('DrawingCanvas.initEvents for resize...: '+this.surface.items.length);
+//		console.log('Dr   awingCanvas.initEvents for resize...: '+this.surface.items.length);
 
 	}
 
