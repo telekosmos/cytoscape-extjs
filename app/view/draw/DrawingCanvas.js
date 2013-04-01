@@ -6,7 +6,36 @@ Ext.define("APP.view.draw.DrawingCanvas", {
 	alias:'widget.drawing-canvas',
 
 	viewBox: false,
-	autoSize: true
+	autoSize: false,
+
+	listeners: {
+		afterrender: function (comp, evOpts) {
+			console.log('afterRender drawingCanvas: '+comp.surface.items.length+' items');
+			// this.initEvents();
+		},
+
+
+		resize: function (draw, width, height) {
+
+			var drawCompSize = draw.getSize();
+			console.log ('resize on DrawingCanvas ('+draw.$className+') measures -> w:'+drawCompSize.width+'; h: '+drawCompSize.height);
+			/*
+			draw.surface.items.first().animate({
+				to: {
+					x: width / 2,
+					y: height / 2
+				},
+				duration: 50
+			})
+			*/
+		}
+
+	},
+
+	initEvents: function () {
+		console.log('DrawingCanvas.initEvents for resize...: '+this.surface.items.length);
+
+	}
 
 	/*
 	 initComponent: function () {

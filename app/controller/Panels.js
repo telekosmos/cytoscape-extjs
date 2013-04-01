@@ -68,15 +68,15 @@ Ext.define('APP.controller.Panels', {
 	},
 
 	onRenderImg: function (c) {
-		console.log('image panel rendered...');
+//		console.log('image panel rendered...');
 	},
 
 	onRenderMain: function (c) {
-		console.log('main panel rendered...');
+//		console.log('main panel rendered...');
 	},
 
 	onRenderSouth: function (c) {
-		console.log('south panel rendered...');
+//		console.log('south panel rendered...');
 	},
 
 	onClickButton: function (comp, ev, opts) {

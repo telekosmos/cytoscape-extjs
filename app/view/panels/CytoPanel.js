@@ -102,8 +102,12 @@ Ext.define('APP.view.panels.CytoPanel', {
 					var target = ev.target;
 
 					var top = target.offsetTop, left = target.offsetLeft;
-					console.log('btnGene mouseover: x='+left+', y='+top+'!!');
-					tip.showAt([left+100, top+100]);
+					var tipMsg ='btnGene mouseover: x='+left+', y='+top+'!!';
+					var myTip = Ext.create('Ext.tip.ToolTip', {
+						html: tipMsg,
+						width: 200
+					});
+					myTip.showAt([left+100, top+100]);
 				}
 			}
 		}, {
@@ -116,7 +120,13 @@ Ext.define('APP.view.panels.CytoPanel', {
 			margin: '5 0 10 10',
 			btnText: ' + ',
 			id: 'txtBtnDisease',
-			emptyText: "Disease"
+			emptyText: "Disease",
+			btnCallback: function (btn, ev) {
+				console.log('textbox-btn btnCallback');
+				btn.up('container').hide();
+				var swapBtn = btn.up('container').up('container').down('#noId');
+				swapBtn.show();
+			}
 		}, {
 			xtype: 'button',
 			text: 'swap me',
@@ -127,7 +137,63 @@ Ext.define('APP.view.panels.CytoPanel', {
 				btn.hide();
 				controls.down('textbox-btn').show();
 			}
-		}]
+		}, {
+			xtype: 'drawing-canvas',
+			autoSize: false,
+			id: 'dc1',
+			height: 100,
+			width: '100%',
+			style: {
+				backgroundColor: 'yellow',
+				padding: '0 0 0 20'
+			}
+		}, {
+			xtype: 'textbox-btn',
+			margin: '5 0 10 10',
+			btnText: 'Add',
+			id: 'txtBtnCanvas',
+			emptyText: 'Protein',
+			btnCallback: function (btn, eOpts) {
+				btn.up('container').hide();
+				var canvas = btn.up('container').up('container').down('#dc1');
+
+				canvas.show();
+
+			}
+		}
+
+		/* }, {
+			xtype: 'drawing-canvas',
+			id: 'dc2',
+			autoSize: false,
+			height: 100,
+			width: '100%',
+			style: {
+				backgroundColor: 'grey',
+				padding: '0 0 0 20'
+			}
+		}, {
+			xtype: 'drawing-canvas',
+			id: 'dc3',
+			autoSize: false,
+			height: 100,
+			width: '100%',
+			style: {
+				backgroundColor: 'lightblue'
+			}
+			 *,
+			listeners: {
+				resize: function (draw, width, height, oldWidth, oldHeight) {
+					draw.surface.items.first().animate({
+						to: {
+							x: width / 2,
+							y: height / 2
+						},
+						duration: 50
+					});
+				}
+			}*/
+		]
 
 	}],
 
@@ -140,5 +206,93 @@ Ext.define('APP.view.panels.CytoPanel', {
 		var textbox = controls.down('textbox-btn');
 		textbox.hide();
 
+		controls.down('#txtBtnCanvas').hide();
+
+		controls.on('afterrender', function (comp, evOpts) {
+			var drawComp = comp.down('drawing-canvas');
+			var controlsWidth = drawComp.getWidth();
+			var x = Math.floor(controlsWidth/2);
+			drawComp.surface.add({
+				type: 'circle',
+				fill: '#79BB3F',
+				radius: 20,
+
+				x: 20,
+				y: 50,
+				listeners: {
+					click: function (comp, evOpts) {
+						var drawCompSize = drawComp.getSize();
+						console.log ('click on drawComp ('+drawComp.$className+') measures -> w:'+drawCompSize.width+'; h: '+drawCompSize.height);
+						// this.suspendEvents(true);
+						// this.resumeEvents();
+
+						var textSprite = drawComp.surface.items.items[1];
+						drawComp.surface.setText(textSprite, 'got it!!!');
+
+						drawComp.hide();
+						controls.down('#txtBtnCanvas').show();
+					}
+				}
+			}).show(true);
+			drawComp.surface.add({
+				type: 'text',
+				text: 'this is only a test',
+				font: '18px Arial',
+				x: 20,
+				y: 70
+				// x: 100
+			}).show(true);
+
+			/*
+			var dc2 = comp.getComponent('dc2');
+			dc2.surface.add({
+				type: 'rect',
+				fill: 'blue',
+				radius: 5,
+				width: 50,
+				height: 50,
+
+				x: 20,
+				y: 20,
+				listeners: {
+					click: function (comp, evOpts) {
+						var drawCompSize = drawComp.getSize();
+						console.log ('click on drawComp ('+drawComp.$className+') measures -> w:'+drawCompSize.width+'; h: '+drawCompSize.height);
+						// this.suspendEvents(true);
+						// this.resumeEvents();
+					}
+				}
+			}).show(true);
+			dc2.surface.add({
+				type: 'text',
+				text: 'this is just another test',
+				font: '18px Arial',
+				x: 20,
+				y: 70
+				// x: 100
+			}).show(true);
+      */
+
+
+
+			/*
+			drawComp.on('resize', function (draw, width, height, oldWidth, oldHeight) {
+				console.log("drawComp resized...");
+				draw.surface.items.first().animate({
+					to: {
+						x: width / 2,
+						y: height / 2
+					},
+					duration: 50
+				})
+			});
+
+			drawComp.on ('afterrender', function (comp, evOpts) {
+				console.log ('onAfterRender drawComp...');
+			});
+
+*/
+		});
 	}
+
 })

@@ -104,7 +104,15 @@ Ext.define('APP.view.cytoscape.CytoScape', {
 				var tipX = containerPos[0]+ev.target.x;
 				var tipY = containerPos[1]+ev.target.y;
 
-				tip.showAt([tipX, tipY]);
+
+				var top = ev.target.rawY, left = ev.target.rawX;
+				var tipMsg ='btnGene mouseover: x='+left+', y='+top+'!!';
+				var myTip = Ext.create('Ext.tip.ToolTip', {
+					html: tipMsg,
+					width: 200
+				});
+				myTip.showAt([tipX, tipY]);
+				// tip.showAt([tipX, tipY]);
 			});
 
 
