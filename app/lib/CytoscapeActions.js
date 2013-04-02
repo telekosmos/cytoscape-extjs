@@ -57,14 +57,33 @@ Ext.define('APP.lib.CytoscapeActions', {
 			return true;
 		},
 
+
 		toString: function() {
-			console.log("App.lib.CytoscapeActions class");
+			console.log("APP.lib.CytoscapeActions class");
 		},
 
 
-		dataToString: function (vis) {
-			var nm = vis.networkModel();
-			console.log(nm.toSource());
+		runGraph: function (vis, nodes, edges) {
+
+			Ext.each(edges, function (edge, index, theEdges) {
+				var sourceId = edge.source;
+				var targetId = edge.target;
+				var srcNode = APP.lib.CytoscapeActions.getNodeFromId(nodes, sourceId),
+						trgNode = APP.lib.CytoscapeActions.getNodeFromId(nodes, targetId);
+
+				var msg = 'Running rule from '+srcNode.label+ ' ('+srcNode.entity+')';
+				msg += ' to '+trgNode.label+' ('+trgNode.entity+')';
+				console.log(msg);
+			})
+		},
+
+
+		getNodeFromId: function (nodes, id) {
+			Ext.each(nodes, function (node, index, theNodes) {
+				if (node.id == id)
+					return node;
+			});
+			return null;
 		}
 
 	}, // EO statics

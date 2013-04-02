@@ -44,6 +44,9 @@ Ext.define('APP.controller.Panels', {
 			'cytopanel > container > entity-lookup > textbox-btn': {
 				click: this.onClickTextbox
 			},
+			'cytopanel > container > container > button': {
+				click: this.onRunGraph
+			},
 			'cytopanel > container > textbox-btn#txtBtnDisease > button': {
 				click: this.onDiseaseBtnClick
 			}
@@ -69,6 +72,19 @@ Ext.define('APP.controller.Panels', {
 //		vis.addNode(20, 20, nodeOpts);
 	},
 
+
+	onRunGraph: function (comp, evOpts) {
+		var cytoscape = this.getCytoscape();
+		var vis = cytoscape.vis;
+
+		var nm = vis.networkModel();
+		var edges = nm.data.edges; // should be an array
+		var nodes = nm.data.nodes;
+
+		APP.lib.CytoscapeActions.runGraph(vis, nodes, edges);
+
+	},
+
 	onDiseaseBtnClick: function (c, ev) {
 		var container = c.ownerCt;
 		var textbox = container.down('textfield');
@@ -80,33 +96,11 @@ Ext.define('APP.controller.Panels', {
 	},
 
 	onRenderImg: function (c) {
-//		console.log('image panel rendered...');
 	},
 
 	onRenderMain: function (c) {
-//		console.log('main panel rendered...');
 	},
 
 	onRenderSouth: function (c) {
-//		console.log('south panel rendered...');
-	},
-
-	onClickButton: function (comp, ev, opts) {
-		console.log('button '+comp.getId()+' clicked');
-		if (comp.getId() == 'noId') return;
-
-		var cytoscape = this.getCytoscape();
-		var vis = cytoscape.vis;
-
-
-		var newId = vis.nodes().length+1;
-		var nodeLabel = comp.getId().indexOf('Gene') != -1 ? 'Gene': 'Compound';
-		var nodeOpts = {
-			id: newId.toString(),
-			label: nodeLabel
-		};
-
-		vis.addNode(20, 20, nodeOpts);
 	}
-
 })

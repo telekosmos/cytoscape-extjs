@@ -88,6 +88,42 @@ var borderColorMapper = {
 	]
 };
 
+
+var myVisualStyle = {
+	global: {
+		tooltipDelay: 100
+	},
+	nodes: {
+		/*
+		 entity: {
+		 passthroughMapper: {
+		 attrName: "shape"
+		 }
+		 },*/
+		size: 48,
+		shape: {discreteMapper: shapeMapper},
+		tooltipText: "this fucking node",
+		borderWidth: 2,
+		selectionColor: 'black',
+		selectionGlowColor: "#FF151A",
+		selectionGlowStrength: 50,
+		color: {discreteMapper: colorMapper},
+		borderColor: {discreteMapper: borderColorMapper}
+		//	borderColor: "red"
+	},
+	edges: {
+		width: 2,
+		selectionColor: 'black',
+		selectionGlowColor: '#FF151A',
+		selectionGlowStrength: 50
+		// label: customMapper...
+	}
+} // visualStyle for CytoScape!!!!!
+
+
+
+
+
 /**
  * A panel with two containers: one container is the cytoscape itself, the
  * other controllers to do operations on the graph
@@ -117,39 +153,9 @@ Ext.define('APP.view.panels.CytoPanel', {
 
 	items: [{
 		xtype: 'cytoscape',
-		// html: 'cytoscape here',
 		networkModel: graphModel,
 		flex: 7,
-		visualStyle: {
-			global: {
-				tooltipDelay: 100
-			},
-			nodes: {
-				/*
-				entity: {
-					passthroughMapper: {
-						attrName: "shape"
-					}
-				},*/
-				size: 48,
-				shape: {discreteMapper: shapeMapper},
-				tooltipText: "this fucking node",
-				borderWidth: 2,
-				selectionColor: 'black',
-				selectionGlowColor: "#FF151A",
-				selectionGlowStrength: 50,
-				color: {discreteMapper: colorMapper},
-				borderColor: {discreteMapper: borderColorMapper}
-			//	borderColor: "red"
-			},
-			edges: {
-				width: 2,
-				selectionColor: 'black',
-				selectionGlowColor: '#FF151A',
-				selectionGlowStrength: 50
-				// label: customMapper...
-			}
-		} // visualStyle for CytoScape!!!!!
+		visualStyle: myVisualStyle
 	}, {
 		xtype: 'container',
 		// html: 'controls here',
@@ -157,9 +163,17 @@ Ext.define('APP.view.panels.CytoPanel', {
 		layout: {
 			type: 'vbox'
 		},
-		items: [ { //////////////////////////////
-			// xtype: 'container',
+		items: [{
+			xtype: 'container',
+			width: '100%',
+			style: {
+				backgroundColor: 'lightgray',
+				padding: '10 10 10 10',
+				marginBottom: 20
+			},
+			html: '<span style="font-family: Arial; font-size: 24px; font-weight: bold">Entities</span>'
 
+		}, {
 			xtype: 'entity-lookup',
 			id: 'entityProt',
 			entity: 'protein',
@@ -222,9 +236,28 @@ Ext.define('APP.view.panels.CytoPanel', {
 				strokeColor: 'red',
 				pos: {x: 11, y: 6}
 			}
-		}
+,
+		}, {
+			xtype: 'container',
+			style: {
+				marginTop: 20,
+				backgroundColor: 'white'
+			},
 
+			// layout: 'column',
 
+			width: '100%',
+			items: [ {
+				xtype: 'button',
+				text: 'Enact',
+				columnWidth: 0.2,
+				id: 'btnEnact',
+				style: {
+					marginLeft: 15
+				}
+
+			}]
+		} // EO container
 		] // EO UPPER container items
 
 	}],
