@@ -61,10 +61,31 @@ Ext.define('APP.view.common.EntityLookup', {
 				width: this.getShape().size.w
 			}
 
+		else if (theShape == 'triangle')
+			spriteCfg = {
+				type: 'path',
+				// path: 'M 100 300 L 200 100 L 300 300 z',
+				path: 'M 5 35 L 22.5 5 L 40 35 z', // this should be calculated on runtime
+				fill: this.getShape().fillColor,
+				// x: this.getShape().pos.x,
+				// y: this.getShape().pos.y,
+				stroke: this.getShape().strokeColor,
+				'stroke-width': 2
+				// height: this.getShape().size.h,
+				// width: this.getShape().size.w
+			}
+		else if (theShape == 'pentagon')
+			spriteCfg = {
+				type: 'path',
+				path: 'm23,3l-18.627579,13.223999l10.972412,15.776001l16.075867,-0.231995l9.951721,-16.472l-18.372421,-12.296005z',
+				fill: this.getShape().fillColor,
+				stroke: this.getShape().strokeColor,
+				'stroke-width': 2
+			}
+
 
 		console.log ('fill is: '+spriteCfg.fill+' = '+this.getShape().fillColor);
 		this.items = [{
-
 			xtype: 'draw',
 			autoSize: false,
 			viewBox: false,

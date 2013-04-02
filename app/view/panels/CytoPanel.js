@@ -94,7 +94,7 @@ Ext.define('APP.view.panels.CytoPanel', {
 		layout: {
 			type: 'vbox'
 		},
-		items: [{
+		items: [/* {
 			xtype: 'button',
 			text: 'Gene',
 			id: 'btnGene',
@@ -129,16 +129,20 @@ Ext.define('APP.view.panels.CytoPanel', {
 				var swapBtn = btn.up('container').up('container').down('#noId');
 				swapBtn.show();
 			}
-		}, { //////////////////////////////
+		},*/ { //////////////////////////////
 			// xtype: 'container',
 
 			xtype: 'entity-lookup',
 			id: 'entity1',
+			style: {
+				// backgroundColor: 'yellow'
+			},
 			btnText: 'Add',
 			emptyText: 'Protein...',
 			shape: {
 				type: 'circle',
 				fillColor: 'pink',
+				strokeColor: 'black',
 				pos: {x: 20, y: 20}
 			}
 		}, { // EO entity-lookup 1
@@ -151,9 +155,41 @@ Ext.define('APP.view.panels.CytoPanel', {
 				// radius: 15,
 				size: {w:30, h:30},
 				fillColor: 'lightgreen',
+				strokeColor: 'darkblue',
 				pos: {x: 5, y: 5}
 			}
-
+		}, { // EO entity-lookup 1
+			xtype: 'entity-lookup',
+			style: {
+				// backgroundColor: 'yellow'
+			},
+			id: 'entity3',
+			btnText: 'Add',
+			emptyText: 'Disease...',
+			shape: {
+				type: 'triangle',
+				// radius: 15,
+				size: {w:30, h:30},
+				fillColor: 'blue',
+				strokeColor: 'lightblue',
+				pos: {x: 5, y: 5}
+			}
+		}, {
+			xtype: 'entity-lookup',
+			style: {
+				// backgroundColor: 'lightgreen'
+			},
+			id: 'entityPentagon',
+			btnText: 'Add',
+			emptyText: 'Gene...',
+			shape: {
+				type: 'pentagon',
+				// radius: 15,
+				size: {w:30, h:30},
+				fillColor: 'orange',
+				strokeColor: 'red',
+				pos: {x: 5, y: 5}
+			}
 		}
 
 
