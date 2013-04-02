@@ -15,9 +15,10 @@ Ext.define('APP.view.common.EntityLookup', {
 
 
 	config: {
-		emptyText: 'nothing',
-		btnCallback: undefined,
-		btnText: '_',
+		emptyText: 'nothing', // for the textbox-button's textfield
+		btnCallback: undefined, // callback button for the textbox-button's button
+		btnText: '_', // text for the button
+		entity: 'protein', // the entity of this instance, will be the meta in textbox-button
 		shape: {
 			type: 'circle',
 			radius: 15,
@@ -37,8 +38,48 @@ Ext.define('APP.view.common.EntityLookup', {
 
 
 	initComponent: function () {
+		var sprite = this.getShapeConfig();
 
-		var spriteCfg, theShape = this.getShape().type;
+//		console.log ('fill is :  '+spriteCfg.fill+' = '+this.getShape().fillColor);
+		this.items = [{
+			xtype: 'draw',
+			autoSize: false,
+			viewBox: false,
+			columnWidth: 0.3,
+			height: 40,
+			// width: 50,
+			style: {
+				// backgroundColor: 'lightgray',
+				paddingLeft: 10
+			},
+			items: [sprite]
+
+		}, {
+			xtype: 'textbox-btn',
+			metaInfo: this.getEntity(),
+			columnWidth:  0.7,
+			margin: '10 10 0 0',
+			btnText: this.getBtnText(),
+			// id: 'txtBtnId',
+			emptyText: this.getEmptyText()
+			/*
+			btnCallback: function (btn, ev) {
+				console.log('textbox-btn btnCallback');
+			}
+			*/
+		}];
+
+		this.callParent(arguments);
+	},
+
+
+	/**
+	 * Builds up a config object for the sprites depending on the configured shape
+	 * @returns {Object} an object with the right paraeters to config the ExtJs draw component
+	 */
+	getShapeConfig: function () {
+
+		var theShape = this.getShape().type, spriteCfg;
 		if (theShape == 'circle')
 			spriteCfg = {
 				type: this.getShape().type,
@@ -83,44 +124,31 @@ Ext.define('APP.view.common.EntityLookup', {
 				'stroke-width': 2
 			}
 
-
-		console.log ('fill is: '+spriteCfg.fill+' = '+this.getShape().fillColor);
-		this.items = [{
-			xtype: 'draw',
-			autoSize: false,
-			viewBox: false,
-			columnWidth: 0.3,
-			height: 40,
-			// width: 50,
-			style: {
-				// backgroundColor: 'lightgray',
-				paddingLeft: 10
-			},
-			items: [/*{
-				type: this.getShape().type,
-				radius: 15,
+		else if (theShape == 'diamond')
+			spriteCfg = {
+				type: 'rect',
 				fill: this.getShape().fillColor,
 				x: this.getShape().pos.x,
 				y: this.getShape().pos.y,
 				stroke: this.getShape().strokeColor,
-				'stroke-width': 2
-			}*/ spriteCfg]
-		}, {
-			xtype: 'textbox-btn',
-			columnWidth:  0.7,
-			margin: '10 10 0 0',
-			btnText: this.getBtnText(),
-			// id: 'txtBtnId',
-			emptyText: this.getEmptyText(),
-			btnCallback: function (btn, ev) {
-				console.log('textbox-btn btnCallback');
-				btn.up('container').hide();
-				var swapBtn = btn.up('container').up('container').down('#noId');
-				swapBtn.show();
+				'stroke-width': 2,
+				height: this.getShape().size.h,
+				width: this.getShape().size.w,
+				rotate: {
+					degrees: 90
+				}
 			}
-		}];
 
-		this.callParent(arguments);
+		var sprite = Ext.create('Ext.draw.Sprite', spriteCfg);
+		if (theShape == 'diamond') {
+			sprite.setAttributes({
+				rotate: {
+					degrees: 45
+				}
+			}, false);
+		}
+
+		return sprite;
 	},
 
 	/*

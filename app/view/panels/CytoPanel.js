@@ -11,7 +11,11 @@ var graphModel = {
 		}, {
 			name: 'payload',
 			type: 'object'
+		}, {
+			name: 'entity',
+			type: 'string'
 		}],
+
 		edges: [{
 			name: "label",
 			type: "string"
@@ -20,15 +24,18 @@ var graphModel = {
 			type: "string"
 		}]
 	},
-	// NOTE the custom attributes on nodes and edges
+
+	/* NOTE the custom attributes on nodes and edges
 	data: {
 		nodes: [{
 			id: "1",
 			label: "1",
+			entity: 'compound',
 			foo: "Is this the real life?"
 		}, {
 			id: "2",
 			label: "2",
+			entity: 'disease',
 			foo: "Is this just fantasy?"
 		}],
 
@@ -40,13 +47,46 @@ var graphModel = {
 			bar: "Caught in a landslide..."
 		}]
 	}
+	*/
+	data: {}
 };
 
 
 var tip = Ext.create('Ext.tip.ToolTip', {
 	html: 'A very simple tooltip',
-	width: 200
+	width: 200,
+	dismissDelay: 100
 });
+
+var shapeMapper = {
+	attrName: 'entity',
+	entries: [
+		{attrValue: 'protein', value: 'CIRCLE'},
+		{attrValue: 'compound', value: 'RECTANGLE'},
+		{attrValue: 'disease', value: 'TRIANGLE'},
+		{attrValue: 'gene', value: 'DIAMOND'}
+	]
+};
+
+var colorMapper = {
+	attrName: 'entity',
+	entries: [
+		{attrValue: 'protein', value: '#FFC0CB'},
+		{attrValue: 'compound', value: '#90ee90'},
+		{attrValue: 'disease', value: 'blue'},
+		{attrValue: 'gene', value: 'orange'}
+	]
+};
+
+var borderColorMapper = {
+	attrName: 'entity',
+	entries: [
+		{attrValue: 'protein', value: 'black'},
+		{attrValue: 'compound', value: '#00008B'},
+		{attrValue: 'disease', value: '#ADD8E6'},
+		{attrValue: 'gene', value: 'red'}
+	]
+};
 
 /**
  * A panel with two containers: one container is the cytoscape itself, the
@@ -81,12 +121,35 @@ Ext.define('APP.view.panels.CytoPanel', {
 		networkModel: graphModel,
 		flex: 7,
 		visualStyle: {
+			global: {
+				tooltipDelay: 100
+			},
 			nodes: {
+				/*
+				entity: {
+					passthroughMapper: {
+						attrName: "shape"
+					}
+				},*/
+				size: 48,
+				shape: {discreteMapper: shapeMapper},
+				tooltipText: "this fucking node",
+				borderWidth: 2,
+				selectionColor: 'black',
 				selectionGlowColor: "#FF151A",
-				tooltipText: "this fucking node"
+				selectionGlowStrength: 50,
+				color: {discreteMapper: colorMapper},
+				borderColor: {discreteMapper: borderColorMapper}
 			//	borderColor: "red"
+			},
+			edges: {
+				width: 2,
+				selectionColor: 'black',
+				selectionGlowColor: '#FF151A',
+				selectionGlowStrength: 50
+				// label: customMapper...
 			}
-		}
+		} // visualStyle for CytoScape!!!!!
 	}, {
 		xtype: 'container',
 		// html: 'controls here',
@@ -94,46 +157,12 @@ Ext.define('APP.view.panels.CytoPanel', {
 		layout: {
 			type: 'vbox'
 		},
-		items: [/* {
-			xtype: 'button',
-			text: 'Gene',
-			id: 'btnGene',
-			margin: '20 0 5 10',
-			listeners: {
-				mouseover: function(comp, ev, opts) {
-					var target = ev.target;
-
-					var top = target.offsetTop, left = target.offsetLeft;
-					var tipMsg ='btnGene mouseover: x='+left+', y='+top+'!!';
-					var myTip = Ext.create('Ext.tip.ToolTip', {
-						html: tipMsg,
-						width: 200
-					});
-					myTip.showAt([left+100, top+100]);
-				}
-			}
-		}, { ///////////////////////////
-			xtype: 'button',
-			text: 'Compound',
-			id: 'btnComp',
-			margin: '5 0 10 10'
-		}, {
-			xtype: 'textbox-btn',
-			margin: '5 0 10 10',
-			btnText: ' + ',
-			id: 'txtBtnDisease',
-			emptyText: "Disease",
-			btnCallback: function (btn, ev) {
-				console.log('textbox-btn btnCallback');
-				btn.up('container').hide();
-				var swapBtn = btn.up('container').up('container').down('#noId');
-				swapBtn.show();
-			}
-		},*/ { //////////////////////////////
+		items: [ { //////////////////////////////
 			// xtype: 'container',
 
 			xtype: 'entity-lookup',
-			id: 'entity1',
+			id: 'entityProt',
+			entity: 'protein',
 			style: {
 				// backgroundColor: 'yellow'
 			},
@@ -147,7 +176,8 @@ Ext.define('APP.view.panels.CytoPanel', {
 			}
 		}, { // EO entity-lookup 1
 			xtype: 'entity-lookup',
-			id: 'entity2',
+			id: 'entityComp',
+			entity: 'compound',
 			btnText: 'Add',
 			emptyText: 'Compound...',
 			shape: {
@@ -163,7 +193,8 @@ Ext.define('APP.view.panels.CytoPanel', {
 			style: {
 				// backgroundColor: 'yellow'
 			},
-			id: 'entity3',
+			id: 'entityDise',
+			entity: 'disease',
 			btnText: 'Add',
 			emptyText: 'Disease...',
 			shape: {
@@ -179,16 +210,17 @@ Ext.define('APP.view.panels.CytoPanel', {
 			style: {
 				// backgroundColor: 'lightgreen'
 			},
-			id: 'entityPentagon',
+			id: 'entityGene',
+			entity: 'gene',
 			btnText: 'Add',
 			emptyText: 'Gene...',
 			shape: {
-				type: 'pentagon',
+				type: 'diamond',
 				// radius: 15,
-				size: {w:30, h:30},
+				size: {w:24, h:24},
 				fillColor: 'orange',
 				strokeColor: 'red',
-				pos: {x: 5, y: 5}
+				pos: {x: 11, y: 6}
 			}
 		}
 

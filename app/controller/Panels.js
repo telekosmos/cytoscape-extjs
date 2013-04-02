@@ -24,15 +24,6 @@ Ext.define('APP.controller.Panels', {
 			ref: 'cytoscape',
 			selector: 'cytopanel > cytoscape'
 		}
-
-		 /*,
-		{
-			ref:'articleTab',
-			xtype:'articlepreview',
-			closable:true,
-			forceCreate:true,
-			selector:'articlepreview'
-		} */
 	],
 
 	init: function () {
@@ -46,8 +37,12 @@ Ext.define('APP.controller.Panels', {
 			'southpanel': {
 				render: this.onRenderSouth
 			},
-			'cytopanel > container > button': {
+			// 'cytopanel > container > container > container > button': { // buttons from entity-lookup components
+			/*'cytopanel > container > entity-lookup > textbox-btn > button': {  // much better than above
 				click: this.onClickButton
+			},*/
+			'cytopanel > container > entity-lookup > textbox-btn': {
+				click: this.onClickTextbox
 			},
 			'cytopanel > container > textbox-btn#txtBtnDisease > button': {
 				click: this.onDiseaseBtnClick
@@ -56,6 +51,23 @@ Ext.define('APP.controller.Panels', {
 		});
 	},
 
+	onClickTextbox: function (comp, evOpts) {
+		console.log('got value '+evOpts.value+' for '+evOpts.meta);
+
+		var cytoscape = this.getCytoscape();
+		var vis = cytoscape.vis;
+
+		var newId = vis.nodes().length+1;
+		var nodeOpts = {
+			id: newId.toString(),
+			label: evOpts.value,
+			entity: evOpts.meta
+		};
+
+		APP.lib.CytoscapeActions.createNode(cytoscape.vis, nodeOpts);
+
+//		vis.addNode(20, 20, nodeOpts);
+	},
 
 	onDiseaseBtnClick: function (c, ev) {
 		var container = c.ownerCt;

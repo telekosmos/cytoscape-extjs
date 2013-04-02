@@ -13,21 +13,25 @@ Ext.define('APP.lib.CytoscapeActions', {
 			var nodeLabel, nodeId;
 			var nodeOpts;
 			if (Ext.isObject(nodeData)) {
-				nodeLabel = nodeData.label;
-				nodeId = nodeData.id;
+			//	nodeLabel = nodeData.label;
+			//	nodeId = nodeData.id;
+				nodeOpts = nodeData;
 			}
 			else {
 				nodeLabel = nodeData;
 				nodeId = vis.nodes().length+1;
+
+				nodeOpts = {
+					id: nodeId.toString(),
+					label: nodeLabel,
+					payload: nodeData.payload,
+					entity: 'protein'
+				};
 			}
+			vis.addNode(50, 50, nodeOpts);
 
-			nodeOpts = {
-				id: nodeId.toString(),
-				label: nodeLabel,
-				payload: nodeData.payload
-			};
+			var nm = vis.networkModel();
 
-			vis.addNode(20, 20, nodeOpts);
 		},
 
 		/**
@@ -55,7 +59,14 @@ Ext.define('APP.lib.CytoscapeActions', {
 
 		toString: function() {
 			console.log("App.lib.CytoscapeActions class");
+		},
+
+
+		dataToString: function (vis) {
+			var nm = vis.networkModel();
+			console.log(nm.toSource());
 		}
+
 	}, // EO statics
 
 
@@ -67,5 +78,6 @@ Ext.define('APP.lib.CytoscapeActions', {
 
 		return this;
 	}
+
 
 })

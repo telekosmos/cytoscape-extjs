@@ -19,7 +19,16 @@ Ext.define('APP.view.cytoscape.CytoScape', {
 
 	initComponent: function () {
 		console.log('cytopanel initComponent');
-
+		/*
+		this.visualStyle = {
+			global: {
+				tooltipDelay: 100
+			},
+			nodes: {
+				shape: { passthroughMapper: { attrName: "shape" } }
+			}
+		};
+		*/
 		this.callParent(arguments);
 		this.on('afterrender', this.initCytoscape, this);
 
@@ -68,8 +77,8 @@ Ext.define('APP.view.cytoscape.CytoScape', {
 				console.log('edges before: '+numEdges+'; and later: '+me.vis.edges().length);
 			});
 
-
-			// select event for nodes. if two nodes selected, one after another, an arrow is displayed
+// PROCEDURE FOR JOINING TWO NODES /////////////
+// select event for nodes. if two nodes selected, one after another, an arrow is displayed
 			me.vis.addListener('select', 'nodes', function(ev) {
 				me.selectionModel.push(ev.target);
 				console.log('select: event target: '+ev.target[0].data.id+'; selectionModel.length: '+me.selectionModel.length);
@@ -96,7 +105,9 @@ Ext.define('APP.view.cytoscape.CytoScape', {
 				me.selectionModel.length = 0;
 				console.log('deselect: event target: '+ev.target[0].data.id+'; selectionModel.length: '+me.selectionModel.length);
 			});
+// EO PROCEDURE FOR JOINING TWO NODES /////////////
 
+			// a mousout should be programmed to hide the tip...
 			me.vis.addListener('mouseover', 'nodes', function(ev) {
 				console.log("on mouseover for "+ev.target.data.id);
 
@@ -109,7 +120,8 @@ Ext.define('APP.view.cytoscape.CytoScape', {
 				var tipMsg ='btnGene mouseover: x='+left+', y='+top+'!!';
 				var myTip = Ext.create('Ext.tip.ToolTip', {
 					html: tipMsg,
-					width: 200
+					width: 200,
+					dismissDelay: 1000
 				});
 				myTip.showAt([tipX, tipY]);
 				// tip.showAt([tipX, tipY]);
@@ -134,16 +146,19 @@ Ext.define('APP.view.cytoscape.CytoScape', {
 // 3. Finally set the visual style again:
 			me.vis.visualStyle(style);
 			me.vis.nodeTooltipsEnabled(false);
-
+/*
 			var nodeOne = {
 					id: '3',
 					label: 'Tres',
+					entity: 'gene',
+					// shape: 'DIAMOND',
 					payload: {
 						data: 'some data'
 					}
 				},
 				nodeTwo = {
 					id: '4',
+					entity: 'protein',
 					label: 'Quatro',
 					payload: {
 						data: 'some four data'
@@ -154,7 +169,7 @@ Ext.define('APP.view.cytoscape.CytoScape', {
 			me.vis.addNode(150, 150, nodeTwo);
 
 			me.vis.addEdge({source: nodeOne.id, target: nodeTwo.id}, true);
-
+*/
 		}); // EO vis.ready
 
 
