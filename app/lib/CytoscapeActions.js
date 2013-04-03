@@ -63,6 +63,14 @@ Ext.define('APP.lib.CytoscapeActions', {
 		},
 */
 
+		/**
+		 * Run the rules based on the edges on the graph. As the graph can have several
+		 * paths, in order to walk all paths, after walking one edge, the next edge
+		 *
+ 		 * @param vis
+		 * @param nodes
+		 * @param edges
+		 */
 		runGraph: function (vis, nodes, edges) {
 
 			Ext.each(edges, function (edge, index, theEdges) {

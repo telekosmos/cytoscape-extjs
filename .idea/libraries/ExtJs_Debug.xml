@@ -1,0 +1,15 @@
+<component name="libraryTable">
+  <library name="ExtJs Debug" type="javaScript">
+    <properties>
+      <option name="frameworkName" value="ExtJS 4" />
+      <option name="frameworkVersion" value="4.0.7" />
+      <sourceFilesUrls>
+        <item url="file://$PROJECT_DIR$/../extjs4.0.7-lib/ext-all-debug.js" />
+      </sourceFilesUrls>
+    </properties>
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/../extjs4.0.7-lib/ext-all-debug.js" />
+    </CLASSES>
+    <SOURCES />
+  </library>
+</component>

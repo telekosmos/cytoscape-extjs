@@ -43,6 +43,7 @@ Ext.define('APP.view.cytoscape.CytoScape', {
 		this.vis = new org.cytoscapeweb.Visualization(div_id, this.visOptions);
 		this.vis.draw({
 			network: me.networkModel,
+			edgeLabelsVisible: true,
 
 			panZoomControlVisible: false // hide pan zoom
 		});
