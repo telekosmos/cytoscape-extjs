@@ -57,11 +57,11 @@ Ext.define('APP.lib.CytoscapeActions', {
 			return true;
 		},
 
-
+/*
 		toString: function() {
 			console.log("APP.lib.CytoscapeActions class");
 		},
-
+*/
 
 		runGraph: function (vis, nodes, edges) {
 
@@ -79,11 +79,14 @@ Ext.define('APP.lib.CytoscapeActions', {
 
 
 		getNodeFromId: function (nodes, id) {
+			var nodeGot = null;
 			Ext.each(nodes, function (node, index, theNodes) {
-				if (node.id == id)
-					return node;
+				if (node.id == id) {
+					nodeGot = node;
+					return false;
+				}
 			});
-			return null;
+			return nodeGot;
 		}
 
 	}, // EO statics
