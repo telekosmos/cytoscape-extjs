@@ -160,10 +160,43 @@ describe('Searching for target information', function () {
 		});
 
 		it ('there should be two leaf nodes', function() {
+			expect(runner).toBeDefined();
+			var leaves = runner.getLeaves();
+
+			expect(leaves).toBeDefined();
+			expect(leaves.length).toBe(2);
+			expect(leaves).toContain("4");
+
+		});
+
+
+		it ('there should be just one root', function () {
+			expect(runner).toBeDefined();
+			var roots = runner.getRoots();
+
+			expect(roots).toBeDefined();
+			expect(roots.length).toBe(1);
+			expect(roots).toContain("6"); // node '6' was teh last one to be added...
+		});
+
+
+
+		it ('it gets a node object from an id', function () {
+			var leaves = runner.getLeaves();
+			var leaf = runner.getNodeFromId(leaves[0]);
+
+			expect(leaf).toBeDefined();
+			expect(leaf.id).toBe(leaves[0]);
+
+			var util = Ext.create('APP.lib.Util', {});
+			var leafStr = util.objectToString(leaf, '');
+			console.log(leafStr);
+
+			expect(leafStr).toBeDefined();
+			// expect(leafStr).toBeSameClass(String);
+			expect(leafStr).not.toBe('');
 
 		})
-
-
 
 
 

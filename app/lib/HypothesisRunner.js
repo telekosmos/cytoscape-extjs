@@ -5,6 +5,8 @@ Ext.define('APP.lib.HypothesisRunner', {
 	edges: undefined, // the graph edges
 	edgesVisited: undefined, // the visited edges
 
+	nodes: undefined,
+
 	nodesId: undefined, // the node ids in an array
 	roots: undefined, // the root nodes id. there can be more than one.
 	leaves: undefined, // the leaf nodes id
@@ -26,6 +28,7 @@ Ext.define('APP.lib.HypothesisRunner', {
 	constructor: function(edges, nodes) {
 		var me = this;
 		this.edges = edges;
+		this.nodes = nodes;
 
 		this.nodesId = [];
 		this.roots = [];
@@ -101,7 +104,7 @@ Ext.define('APP.lib.HypothesisRunner', {
 	 * could be changed since the last time and/or the root can be not the very first
 	 * source in the very first edge in the edge's array. Then, the roots for the graph
 	 * are defined as the nodes which are not target in any edge.
-	 * @return {Array} an array with the root nodes
+	 * @return {Array} an array with the root nodes ids
  	 */
 	getRoots: function () {
 		var targets = [];
@@ -119,7 +122,7 @@ Ext.define('APP.lib.HypothesisRunner', {
 	/**
 	 * Gets an array with the nodes which doesn't have children, which means those
 	 * which aren't in the source part of any edge
-	 * @return {Array} an array with the leaf nodes
+	 * @return {Array} an array with the leaf nodes ids
 	 */
 	getLeaves: function () {
 		var sources = [];
@@ -131,6 +134,41 @@ Ext.define('APP.lib.HypothesisRunner', {
 
 		return leaves;
 	},
+
+
+	/**
+	 * Gets the object nodes from their ids.
+	 * @param {Array} ids an array of ids to get their related nodes
+	 */
+	getNodesFromIds: function (ids) {
+		var nodeSet = null;
+		Ext.each (this.nodes, function(node, index, nodes) {
+			if (Ext.Array.contains(ids, node.id))
+				nodeSet.push(node);
+		});
+
+		return nodeSet;
+	},
+
+
+	/**
+	 * It returns a node whose id matches with the id parameter.
+	 * @param id
+	 * @returns {Object} a node or null if no node with that id can be found
+	 */
+	getNodeFromId: function (id) {
+		var mynode = null;
+		Ext.each (this.nodes, function(node, index, nodes) {
+			if (node.id == id) {
+				mynode = node;
+				return false;
+			}
+		});
+
+		return mynode;
+	},
+
+
 
 
 	toString: function () {
