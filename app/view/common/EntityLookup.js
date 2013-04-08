@@ -47,10 +47,11 @@ Ext.define('APP.view.common.EntityLookup', {
 			viewBox: false,
 			columnWidth: 0.3,
 			height: 40,
-			// width: 50,
+			width: 50,
 			style: {
 				// backgroundColor: 'lightgray',
-				paddingLeft: 10
+				paddingLeft: 10,
+				marginRight: 10
 			},
 			items: [sprite]
 

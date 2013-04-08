@@ -13,7 +13,7 @@ Ext.onReady(function() {
 		paths: {
 			'APP': 'app'
 		},
-		requires: ['APP.lib.HypothesisRunner'],
+		requires: ['APP.lib.HypothesisRunner', 'APP.lib.Util'],
 
 		controllers: [
 			'Panels'

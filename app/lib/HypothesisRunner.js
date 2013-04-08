@@ -1,5 +1,5 @@
 
-
+Ext.require(['APP.lib.Util']);
 Ext.define('APP.lib.HypothesisRunner', {
 
 	edges: undefined, // the graph edges
@@ -33,6 +33,7 @@ Ext.define('APP.lib.HypothesisRunner', {
 		this.nodesId = [];
 		this.roots = [];
 		this.leaves = [];
+		this.edgesVisited = [];
 		this.hypothesis = [];
 		this.stack = [];
 		this.tempPath = [];
@@ -43,37 +44,56 @@ Ext.define('APP.lib.HypothesisRunner', {
 				me.nodesId.push(node.id);
 		});
 
-		this.roots = this.getRoots();
-		this.leaves = this.getLeaves();
+		this.roots = this.getGraphRoots();
+		this.leaves = this.getGraphLeaves();
 	},
 
 
-
-	runner: function () {
+	/**
+	 * Gets all possible paths in the depicted graph. In the end, an array of arrays
+	 * of edges, representing all possible resolution paths in the graph, is returned.
+	 */
+	graphWalker: function () {
 		var me = this;
 		Ext.each(this.roots, function (root, index, rootSet) {
 			var edgesInRootBranch = true;
 			var source = root;
 			while (edgesInRootBranch) {
 				var edgeFound = me.getEdge(source);
-				if (edgeFound != null) {
+				if (edgeFound != null) { // continue building up the path
 					me.edgesVisited.push(edgeFound); // mark as visited
 					me.tempPath.push(edgeFound); // set as path component
 					me.stack.push(source); // add to the stack in order to get back
 					source = edgeFound.target;
 				}
-				else {
+				else { // add the found path and/or just continue iterating depending on below
 					// Check whether or not source is a leaf node has to be checked in order
 					// to update the paths array: tempPat will be added to the array if source is leaf
-					if (Ext.Array.contains(me.leaves, source))
-						me.paths.push(me.tempPath);
+					if (Ext.Array.contains(me.leaves, source)) {
+						var newPath = me.tempPath.slice(0);
+						me.paths.push(newPath);
+					}
+
+					// Remove the edges with the current source as origin from visited
+					// if the current source has more than one parent.
+					// Necessary to be able to walk the edges again from the other parent's branch
+					var sourceParents = me.getParentsForNode(source);
+					if (sourceParents.length > 1) {
+						Ext.each(me.edgesVisited, function (edge, index, edges) {
+							if (source == edge.source)
+								Ext.Array.remove(me.edgesVisited, edge);
+						})
+					}
 
 					me.tempPath.pop();
 					source = me.stack.pop();
-
 				} // EO if-else
+
+				edgesInRootBranch = !(source === undefined);
 			} // EO while
-		})
+		});
+
+		return me.paths;
 	},
 
 
@@ -90,10 +110,9 @@ Ext.define('APP.lib.HypothesisRunner', {
 		Ext.each(this.edges, function (edge, index, edgeSet) {
 			if (edge.source == source && !Ext.Array.contains(me.edgesVisited, edge)) {
 				foundEdge = edge;
-				return false
+				return false;
 			}
-		})
-
+		});
 		return foundEdge;
 	},
 
@@ -106,7 +125,7 @@ Ext.define('APP.lib.HypothesisRunner', {
 	 * are defined as the nodes which are not target in any edge.
 	 * @return {Array} an array with the root nodes ids
  	 */
-	getRoots: function () {
+	getGraphRoots: function () {
 		var targets = [];
 		var me = this;
 		Ext.each(this.edges, function (edge, index, edgeSet) {
@@ -124,7 +143,7 @@ Ext.define('APP.lib.HypothesisRunner', {
 	 * which aren't in the source part of any edge
 	 * @return {Array} an array with the leaf nodes ids
 	 */
-	getLeaves: function () {
+	getGraphLeaves: function () {
 		var sources = [];
 		Ext.each(this.edges, function (edge, index, edgeSet) {
 			if (Ext.Array.contains(sources, edge.source) == false)
@@ -137,17 +156,32 @@ Ext.define('APP.lib.HypothesisRunner', {
 
 
 	/**
+	 * Gets the parents of the node represented by nodeId
+	 * @param {Number} nodeId the node unique identifier
+	 * @returns an array with the node parent ids
+	 */
+	getParentsForNode: function (nodeId) {
+		var parents = [];
+		Ext.each(this.edges, function (edge, index, edgeSet) {
+			if (edge.target == nodeId)
+				parents.push(edge.source);
+		});
+
+		return parents;
+	},
+
+	/**
 	 * Gets the object nodes from their ids.
 	 * @param {Array} ids an array of ids to get their related nodes
 	 */
 	getNodesFromIds: function (ids) {
-		var nodeSet = null;
+		var nodeSet = new Array();
 		Ext.each (this.nodes, function(node, index, nodes) {
 			if (Ext.Array.contains(ids, node.id))
 				nodeSet.push(node);
 		});
 
-		return nodeSet;
+		return nodeSet.length == 0? null: nodeSet;
 	},
 
 
@@ -169,6 +203,18 @@ Ext.define('APP.lib.HypothesisRunner', {
 	},
 
 
+	pathsToString: function () {
+		var stringPaths = '';
+		Ext.each(this.paths, function (path, index, paths) {
+			var pathStr = APP.lib.Util.objToString(path, '');
+			console.log(pathStr);
+			console.log('=========');
+
+			stringPaths += pathStr;
+		});
+
+		return stringPaths;
+	},
 
 
 	toString: function () {

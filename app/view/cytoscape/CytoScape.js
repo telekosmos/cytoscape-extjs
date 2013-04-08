@@ -18,17 +18,6 @@ Ext.define('APP.view.cytoscape.CytoScape', {
 	selectionModel: [],
 
 	initComponent: function () {
-		console.log('cytopanel initComponent');
-		/*
-		this.visualStyle = {
-			global: {
-				tooltipDelay: 100
-			},
-			nodes: {
-				shape: { passthroughMapper: { attrName: "shape" } }
-			}
-		};
-		*/
 		this.callParent(arguments);
 		this.on('afterrender', this.initCytoscape, this);
 
@@ -110,7 +99,7 @@ Ext.define('APP.view.cytoscape.CytoScape', {
 
 			// a mousout should be programmed to hide the tip...
 			me.vis.addListener('mouseover', 'nodes', function(ev) {
-				console.log("on mouseover for "+ev.target.data.id);
+				// console.log("on mouseover for "+ev.target.data.id);
 
 				var containerPos = me.getPosition();
 				var tipX = containerPos[0]+ev.target.x;

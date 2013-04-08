@@ -73,6 +73,13 @@ Ext.define('APP.lib.CytoscapeActions', {
 		 */
 		runGraph: function (vis, nodes, edges) {
 
+			var runner = Ext.create('APP.lib.HypothesisRunner', edges, nodes);
+			var paths = runner.graphWalker();
+
+			runner.pathsToString();
+
+
+			/*
 			Ext.each(edges, function (edge, index, theEdges) {
 				var sourceId = edge.source;
 				var targetId = edge.target;
@@ -83,6 +90,7 @@ Ext.define('APP.lib.CytoscapeActions', {
 				msg += ' to '+trgNode.label+' ('+trgNode.entity+')';
 				console.log(msg);
 			})
+			*/
 		},
 
 
