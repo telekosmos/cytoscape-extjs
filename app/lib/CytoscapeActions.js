@@ -42,7 +42,13 @@ Ext.define('APP.lib.CytoscapeActions', {
 		 */
 		createEdge: function (vis, nodes) {
 			var edges = vis.edges().length;
-			var nodeOneId = nodes[0][0].data.id, nodeTwoId = nodes[1][0].data.id;
+			var nodeOneId = nodes[0].data.id, nodeTwoId = nodes[1].data.id;
+
+			// Check if the edge already exists
+			var currentEdge = this.getEdgeFromNodes(vis.edges(), nodeOneId, nodeTwoId);
+			if (currentEdge != null)
+				return false;
+
 			var edgeData = {
 				source: nodeOneId.toString(),
 				target: nodeTwoId.toString(),
@@ -78,7 +84,6 @@ Ext.define('APP.lib.CytoscapeActions', {
 
 			runner.pathsToString();
 
-
 			/*
 			Ext.each(edges, function (edge, index, theEdges) {
 				var sourceId = edge.source;
@@ -93,6 +98,24 @@ Ext.define('APP.lib.CytoscapeActions', {
 			*/
 		},
 
+
+		/**
+		 * Returns the edge which goes from srcId to targetId or null if it does not exist
+		 * @param edges
+		 * @param srcId
+		 * @param targetId
+		 * @returns an edge object or null if does not exist
+		 */
+		getEdgeFromNodes: function (edges, srcId, targetId) {
+			var edgeResult = null;
+			Ext.each(edges, function(edge, index, edgeSet) {
+				if (edge.data.source == srcId && edge.data.target == targetId) {
+					edgeResult = edge;
+					return false;
+				}
+			})
+			return edgeResult;
+		},
 
 		getNodeFromId: function (nodes, id) {
 			var nodeGot = null;

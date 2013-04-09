@@ -44,7 +44,7 @@ Ext.define('APP.controller.Panels', {
 			'cytopanel > container > entity-lookup > textbox-btn': {
 				click: this.onClickTextbox
 			},
-			'cytopanel > container > container > button': {
+			'cytopanel > container > container > container > button': {
 				click: this.onRunGraph
 			},
 			'cytopanel > container > textbox-btn#txtBtnDisease > button': {
@@ -74,15 +74,28 @@ Ext.define('APP.controller.Panels', {
 
 
 	onRunGraph: function (comp, evOpts) {
+		var btnId = comp.getId();
 		var cytoscape = this.getCytoscape();
 		var vis = cytoscape.vis;
+		var edges, nodes;
 
-		var nm = vis.networkModel();
-		var edges = nm.data.edges; // should be an array
-		var nodes = nm.data.nodes;
+		if (btnId == 'btnEnact') {
+			var nm = vis.networkModel();
+			edges = nm.data.edges; // should be an array
+			nodes = nm.data.nodes;
+		}
+		else if (btnId == 'btnEnactSel') {
+			var selModel;
+			selModel = Ext.Array.map(cytoscape.selectionModel, function (item) {
+				return item.data;
+			});
+
+			var nm = vis.networkModel();
+			nodes = selModel;
+			edges = nm.data.edges;
+		}
 
 		APP.lib.CytoscapeActions.runGraph(vis, nodes, edges);
-
 	},
 
 	onDiseaseBtnClick: function (c, ev) {
@@ -92,7 +105,6 @@ Ext.define('APP.controller.Panels', {
 
 		var cytoscape = this.getCytoscape();
 		APP.lib.CytoscapeActions.createNode(cytoscape.vis, disease);
-
 	},
 
 	onRenderImg: function (c) {

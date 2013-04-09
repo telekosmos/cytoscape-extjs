@@ -33,7 +33,7 @@ Ext.define('APP.view.common.EntityLookup', {
 		this.initConfig(config);
 
 		this.superclass.constructor.call(this, config);
-		console.log("EntityLookup: after constructor");
+		// console.log("EntityLookup: after constructor");
 	},
 
 
@@ -192,7 +192,7 @@ Ext.define('APP.view.common.EntityLookup', {
 
 	listeners: {
 		afterrender: function (comp, evOpts) {
-			console.log('afterrender '+comp.$className);
+			// console.log('afterrender '+comp.$className);
 		}
 	}
 })

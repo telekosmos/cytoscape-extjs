@@ -33,7 +33,6 @@ Ext.define('APP.view.common.TextboxButton', {
 		this.initConfig(config);
 
 		this.superclass.constructor.call(this, config);
-		console.log("TxtButton: after constructor");
 	},
 
 	initComponent: function () {

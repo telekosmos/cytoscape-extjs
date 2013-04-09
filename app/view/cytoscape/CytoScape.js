@@ -70,16 +70,16 @@ Ext.define('APP.view.cytoscape.CytoScape', {
 // PROCEDURE FOR JOINING TWO NODES /////////////
 // select event for nodes. if two nodes selected, one after another, an arrow is displayed
 			me.vis.addListener('select', 'nodes', function(ev) {
-				me.selectionModel.push(ev.target);
-				console.log('select: event target: '+ev.target[0].data.id+'; selectionModel.length: '+me.selectionModel.length);
+				me.selectionModel.push(ev.target[0]);
+				// console.log('select: event target: '+ev.target[0].data.id+'; selectionModel.length: '+me.selectionModel.length);
 
 				// THIS IS TO ADD AN EDGE JOINING THE NODES STRAIGHT AWAY
 				if (me.selectionModel.length == 2) {
-					console.log('Adding edge and removing selected nodes');
+					// console.log('Adding edge and removing selected nodes');
 					var added = APP.lib.CytoscapeActions.createEdge(me.vis, me.selectionModel);
 					if (added) {
-						var node1Id = me.selectionModel[0][0].data.id,
-								node2Id = me.selectionModel[1][0].data.id;
+						var node1Id = me.selectionModel[0].data.id,
+								node2Id = me.selectionModel[1].data.id;
 						me.selectionModel.length = 0;
 
 						me.vis.deselect("nodes", [node1Id, node2Id]);
@@ -89,11 +89,8 @@ Ext.define('APP.view.cytoscape.CytoScape', {
 			}); // EO addListener select!!
 
 			me.vis.addListener("deselect", 'nodes', function (ev) {
-//				var elemIndex = Ext.Array.indexOf(me.selectionModel, ev.target);
-
-//				me.selectionModel = Ext.Array.remove(me.selectionModel, ev.target);
 				me.selectionModel.length = 0;
-				console.log('deselect: event target: '+ev.target[0].data.id+'; selectionModel.length: '+me.selectionModel.length);
+				// console.log('deselect: event target: '+ev.target[0].data.id+'; selectionModel.length: '+me.selectionModel.length);
 			});
 // EO PROCEDURE FOR JOINING TWO NODES /////////////
 
@@ -120,7 +117,6 @@ Ext.define('APP.view.cytoscape.CytoScape', {
 
 			// 1. First, create a function and add it to the Visualization object.
 			me.vis["customTooltip"] = function (data) {
-				console.log('tooltip not displayed...');
 				var value = Math.round(100 * data["weight"]) + "%";
 				value=data['label']+' jejejeje';
 

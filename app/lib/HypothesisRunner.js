@@ -107,8 +107,14 @@ Ext.define('APP.lib.HypothesisRunner', {
 	getEdge: function(source) {
 		var foundEdge = null;
 		var me = this;
+		var containsTarget, containsVisited;
+		// The conditions to get the right edge are, basically, not to be among the visited ones
+		// and, to deal with selected nodes, the target node is inside the (sub)set of
+		// selected nodes
 		Ext.each(this.edges, function (edge, index, edgeSet) {
-			if (edge.source == source && !Ext.Array.contains(me.edgesVisited, edge)) {
+			containsVisited = Ext.Array.contains(me.edgesVisited, edge);
+			containsTarget = Ext.Array.contains(me.nodesId, edge.target);
+			if (edge.source == source && !containsVisited && containsTarget) {
 				foundEdge = edge;
 				return false;
 			}

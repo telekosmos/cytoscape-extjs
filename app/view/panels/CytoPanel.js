@@ -236,26 +236,35 @@ Ext.define('APP.view.panels.CytoPanel', {
 				strokeColor: 'red',
 				pos: {x: 11, y: 6}
 			}
-,
 		}, {
 			xtype: 'container',
 			style: {
 				marginTop: 20,
-				backgroundColor: 'white'
+				backgroundColor: 'yellow'
 			},
 
-			// layout: 'column',
+			layout: 'column',
 
 			width: '100%',
 			items: [ {
-				xtype: 'button',
-				text: 'Enact',
-				columnWidth: 0.2,
-				id: 'btnEnact',
-				style: {
-					marginLeft: 15
-				}
+				columnWidth: 0.7,
+				items:[{
+					xtype: 'button',
+					text: 'Enact',
 
+					id: 'btnEnact'
+				}]
+				/*style: {
+					marginLeft: 15
+				} */
+			}, {
+				columnWidth: 0.3,
+				items: [{
+					xtype: 'button',
+					text: 'Enact selected',
+
+					id: 'btnEnactSel'
+				}]
 			}]
 		} // EO container
 		] // EO UPPER container items
