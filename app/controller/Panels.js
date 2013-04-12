@@ -54,17 +54,28 @@ Ext.define('APP.controller.Panels', {
 		});
 	},
 
+	/**
+	 * Callback for the event when clicking a button in a textbox-btn component
+	 * contained in a entity-lookup widget
+	 * @param comp, a textbox-btn widget
+	 * @param evOpts the event options
+	 */
 	onClickTextbox: function (comp, evOpts) {
 		console.log('got value '+evOpts.value+' for '+evOpts.meta);
 
 		var cytoscape = this.getCytoscape();
 		var vis = cytoscape.vis;
+		var entityWidget = comp.up();
+		var shape = entityWidget.getShape().type;
+
 
 		var newId = vis.nodes().length+1;
+		// OUR NODE definition!!!
 		var nodeOpts = {
 			id: newId.toString(),
 			label: evOpts.value,
-			entity: evOpts.meta
+			entity: APP.view.common.EntityLookup.shape2entity[shape],
+			payloadValue: evOpts.value
 		};
 
 		APP.lib.CytoscapeActions.createNode(cytoscape.vis, nodeOpts);

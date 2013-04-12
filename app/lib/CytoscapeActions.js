@@ -2,11 +2,11 @@
  * This is a lib with static methods to operate on a cytoscape instance
  */
 Ext.define('APP.lib.CytoscapeActions', {
-	statics:{
+	statics: {
 		/**
 		 * Creates a new node in the flash cytoscape.
 		 * @param vis the cytoscape visualization object (supporting all methods to change de graph)
-		 * @param nodeData the json object with the node data, such that {id: 'id', label: 'label', payload: whatever}
+		 * @param nodeData the json object with the node data, such that {id: 'id', label: 'label', payloadValue: whatever}
 		 */
 		createNode: function (vis, nodeData) {
 			var newId = vis.nodes().length+1;
@@ -23,9 +23,11 @@ Ext.define('APP.lib.CytoscapeActions', {
 
 				nodeOpts = {
 					id: nodeId.toString(),
-					label: nodeLabel,
-					payload: nodeData.payload,
-					entity: 'protein'
+					label: nodeData,
+					entity: APP.view.common.EntityLookup.entity[nodeData],
+//					entity: 'protein',
+					payloadValue: nodeData
+
 				};
 			}
 			vis.addNode(50, 50, nodeOpts);
@@ -50,17 +52,45 @@ Ext.define('APP.lib.CytoscapeActions', {
 				return false;
 
 			var edgeData = {
+				id: 'e'+nodeOneId.toString()+'-'+nodeTwoId.toString(),
+				directed: true,
 				source: nodeOneId.toString(),
 				target: nodeTwoId.toString(),
 				label: 'from '+nodeOneId+' to '+nodeTwoId,
-				bar: 'create programatically',
-				id: 'e'+nodeOneId.toString()+'-'+nodeTwoId.toString(),
-				directed: true
+
+				rule: undefined
+				/*
+				rule: Ext.create('EdgeRule', {
+					edgeSource: nodes[0].data,
+					edgeTarget: nodes[1].data,
+					ruleFunctions: [{
+						alias: 'myFunc',
+						result: undefined,
+						threshold: undefined,
+						func: function (a,b,thr) {
+							var res = somethingToDoWith(a,b);
+							res.match(thr) == true;
+						}
+					}]
+				} // EO function object
+				) // EO rule
+				*/
 //				color: '#FF0300'
 			};
 			vis.addEdge(edgeData, true);
 
+
 			return true;
+		},
+
+
+		/**
+		 * It converts the shape (rect, circle,...) into an entity (protein, compound, ...)
+		 * @param {String} shape an string representing the shape
+		 * @return the entity who is represented by that shape
+		 */
+		shape2entity: function (shape) {
+
 		},
 
 /*
@@ -83,19 +113,6 @@ Ext.define('APP.lib.CytoscapeActions', {
 			var paths = runner.graphWalker();
 
 			runner.pathsToString();
-
-			/*
-			Ext.each(edges, function (edge, index, theEdges) {
-				var sourceId = edge.source;
-				var targetId = edge.target;
-				var srcNode = APP.lib.CytoscapeActions.getNodeFromId(nodes, sourceId),
-						trgNode = APP.lib.CytoscapeActions.getNodeFromId(nodes, targetId);
-
-				var msg = 'Running rule from '+srcNode.label+ ' ('+srcNode.entity+')';
-				msg += ' to '+trgNode.label+' ('+trgNode.entity+')';
-				console.log(msg);
-			})
-			*/
 		},
 
 
