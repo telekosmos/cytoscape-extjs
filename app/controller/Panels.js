@@ -74,7 +74,7 @@ Ext.define('APP.controller.Panels', {
 		var nodeOpts = {
 			id: newId.toString(),
 			label: evOpts.value,
-			entity: APP.view.common.EntityLookup.shape2entity[shape],
+			entity: APP.lib.CytoscapeActions.shape2entity[shape], // this is a Number
 			payloadValue: evOpts.value
 		};
 

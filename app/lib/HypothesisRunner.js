@@ -1,5 +1,9 @@
 
 Ext.require(['APP.lib.Util']);
+
+/**
+ * This class gets (and keeps) all possible paths to walk in a graph.
+ */
 Ext.define('APP.lib.HypothesisRunner', {
 
 	edges: undefined, // the graph edges
@@ -52,6 +56,7 @@ Ext.define('APP.lib.HypothesisRunner', {
 	/**
 	 * Gets all possible paths in the depicted graph. In the end, an array of arrays
 	 * of edges, representing all possible resolution paths in the graph, is returned.
+	 * @return {Array} the array with all discovered paths
 	 */
 	graphWalker: function () {
 		var me = this;

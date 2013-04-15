@@ -194,34 +194,7 @@ Ext.define('APP.view.common.EntityLookup', {
 		afterrender: function (comp, evOpts) {
 			// console.log('afterrender '+comp.$className);
 		}
-	},
-
-
-	statics: {
-		GENE: 1,
-		PROTEIN: 2,
-		COMPOUND: 3,
-		DISEASE: 4,
-
-		/**
-		 * Mapping from shape (as String) to a entity (as a integer constant)
-		 */
-		shape2entity: {
-			'circle': APP.view.common.EntityLookup.PROTEIN,
-			'square': APP.view.common.EntityLookup.COMPOUND,
-			'triangle': APP.view.common.EntityLookup.DISEASE,
-			'diamond':  APP.view.common.EntityLookup.GENE
-		},
-
-		convert2entity: {
-			'protein': APP.view.common.EntityLookup.PROTEIN,
-			'compound': APP.view.common.EntityLookup.COMPOUND,
-			'disease': APP.view.common.EntityLookup.DISEASE,
-			'gene':  APP.view.common.EntityLookup.GENE
-		}
-
-
-
 	}
+
 
 })

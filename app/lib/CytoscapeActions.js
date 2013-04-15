@@ -3,6 +3,34 @@
  */
 Ext.define('APP.lib.CytoscapeActions', {
 	statics: {
+
+		GENE: 1,
+		PROTEIN: 2,
+		COMPOUND: 3,
+		DISEASE: 4,
+
+		/**
+		 * It converts the shape (rect, circle,...) into an entity (protein, compound, ...)
+		 */
+		shape2entity: {
+			'circle': self.PROTEIN,
+			'square': self.COMPOUND,
+			'triangle': self.DISEASE,
+			'diamond':  self.GENE
+		},
+
+		/**
+		 * Converts from an entity string into an entity code
+		 */
+		convert2entity: {
+			'protein': self.PROTEIN,
+			'compound': self.COMPOUND,
+			'disease': self.DISEASE,
+			'gene':  self.GENE
+		},
+
+
+
 		/**
 		 * Creates a new node in the flash cytoscape.
 		 * @param vis the cytoscape visualization object (supporting all methods to change de graph)
@@ -36,6 +64,8 @@ Ext.define('APP.lib.CytoscapeActions', {
 
 		},
 
+
+
 		/**
 		 * Creates a new (directed) edge between the nodes
 		 * @param vis the cytoscape Visualization instance
@@ -58,8 +88,14 @@ Ext.define('APP.lib.CytoscapeActions', {
 				target: nodeTwoId.toString(),
 				label: 'from '+nodeOneId+' to '+nodeTwoId,
 
-				rule: undefined
+				rule: APP.lib.EdgeRuleFactory.createRule(nodes[0].data, nodes[1].data)
 				/*
+				nodes[0].data = {
+					id
+					payloadValue
+					label
+					entity
+				}
 				rule: Ext.create('EdgeRule', {
 					edgeSource: nodes[0].data,
 					edgeTarget: nodes[1].data,
@@ -79,25 +115,23 @@ Ext.define('APP.lib.CytoscapeActions', {
 			};
 			vis.addEdge(edgeData, true);
 
-
 			return true;
 		},
 
 
-		/**
+
+		/*
 		 * It converts the shape (rect, circle,...) into an entity (protein, compound, ...)
 		 * @param {String} shape an string representing the shape
 		 * @return the entity who is represented by that shape
-		 */
+		 *
 		shape2entity: function (shape) {
 
 		},
+    */
 
-/*
-		toString: function() {
-			console.log("APP.lib.CytoscapeActions class");
-		},
-*/
+
+
 
 		/**
 		 * Run the rules based on the edges on the graph. As the graph can have several
