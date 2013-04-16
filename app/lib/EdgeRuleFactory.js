@@ -1,6 +1,6 @@
 
 
-Ext.require(['APP.lib.CytoscapeActions, APP.lib.EdgeRule']);
+Ext.require(['APP.lib.CytoscapeActions', 'APP.lib.EdgeRule']);
 Ext.define('APP.lib.EdgeRuleFactory', {
 
 	config: {},

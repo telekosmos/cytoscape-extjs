@@ -107,7 +107,22 @@ Ext.define('APP.lib.Util', {
 				}
 			}
 			return stringObj;
+		},
+
+
+		clone: function (obj) {
+			if (obj === null || typeof obj !== 'object') {
+				return obj; // return obj if obj is a Number, String, Boolean, ...
+			}
+
+			var temp = obj.constructor(); // give temp the original obj's constructor
+			for (var key in obj) {
+				temp[key] = this.clone(obj[key]);
+			}
+
+			return temp;
 		}
 
-	}
-})
+	} // EO statics
+
+}) // EO class

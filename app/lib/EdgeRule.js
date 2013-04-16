@@ -11,7 +11,12 @@ Ext.define('APP.lib.EdgeRule', {
 
 	config: {
 		/**
-		 * The node source of the edge, where the (entry) values are found
+		 * The node source of the edge, where the (entry) values are found.
+		 * This should be an object with at least the following members:
+		 * - id
+		 * - label
+		 * - entity
+		 * - payloadValue
 		 */
 		edgeSource: undefined,
 		/**
@@ -68,15 +73,12 @@ Ext.define('APP.lib.EdgeRule', {
 		var me = this;
 		Ext.each(me.ruleFunctions, function (ruleFunc, index, functions) {
 			ruleFunc.func(me.edgeSource.payloadValue,
-									me.edgeTarget.payloadValue, ruleFunc);
+									me.edgeTarget.payloadValue, ruleFunc.threshold, ruleFunc);
 		})
 	},
 
 
 
-
-// TODO this can be done as a config in such a way the user can add the functions
-// in creation/config time, or pass a function object to add functions later...
 	addFunction: function () {
 		var functionObj = {
 			result: undefined,

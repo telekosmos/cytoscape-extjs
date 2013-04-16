@@ -77,7 +77,7 @@ Ext.define('APP.view.cytoscape.CytoScape', {
 				if (me.selectionModel.length == 2) {
 					// console.log('Adding edge and removing selected nodes');
 					var added = APP.lib.CytoscapeActions.createEdge(me.vis, me.selectionModel);
-					if (added) {
+					if (added !== undefined) {
 						var node1Id = me.selectionModel[0].data.id,
 								node2Id = me.selectionModel[1].data.id;
 						me.selectionModel.length = 0;

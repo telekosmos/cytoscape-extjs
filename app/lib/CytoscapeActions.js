@@ -68,13 +68,14 @@ Ext.define('APP.lib.CytoscapeActions', {
 
 		/**
 		 * Creates a new (directed) edge between the nodes
-		 * @param vis the cytoscape Visualization instance
-		 * @param nodes the (two) nodes to connect by the edge. These are the straight
+		 * @param {org.cytoscapeweb.Visualization} vis the cytoscape Visualization instance
+		 * @param {Array} nodes the (two) nodes to connect by the edge. These are the straight
 		 * target objects as delivered by the Event object and stored in the selectionModel
 		 */
 		createEdge: function (vis, nodes) {
 			var edges = vis.edges().length;
 			var nodeOneId = nodes[0].data.id, nodeTwoId = nodes[1].data.id;
+			var newEdge = undefined;
 
 			// Check if the edge already exists
 			var currentEdge = this.getEdgeFromNodes(vis.edges(), nodeOneId, nodeTwoId);
@@ -113,9 +114,10 @@ Ext.define('APP.lib.CytoscapeActions', {
 				*/
 //				color: '#FF0300'
 			};
-			vis.addEdge(edgeData, true);
 
-			return true;
+			newEdge = vis.addEdge(edgeData, true);
+
+			return newEdge;
 		},
 
 

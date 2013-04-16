@@ -1,7 +1,6 @@
 
 Ext.require(['APP.lib.CytoscapeActions']);
 Ext.define('APP.lib.RuleFunctions', (function () {
-
 	/**
 	 * Gets interactions among the two values
 	 * Call the API at localhost:<rails_port>/api/interactions/target1/target2?conf_val=val
@@ -57,7 +56,7 @@ Ext.define('APP.lib.RuleFunctions', (function () {
 			Ext.data.JsonP.request({
 				url: url,
 				params: {
-					threshold: threshold
+					threshold: threshold === undefined? 0.0: threshold
 				},
 
 				callback: function (opts, resp) {
@@ -83,8 +82,8 @@ Ext.define('APP.lib.RuleFunctions', (function () {
 				}
 
 			})
-		} // EO interactionFunc
-	};
+		} // EO func member
+	}; // EO interactionFunc object
 
 
 	var notImplementedYet = function (valSrc, valTrg, threshold, funcObj) {
@@ -108,13 +107,21 @@ Ext.define('APP.lib.RuleFunctions', (function () {
 					case APP.lib.CytoscapeActions.PROTEIN:
 						switch (entityTarget) {
 							case APP.lib.CytoscapeActions.PROTEIN:
-								funcArray.push(interactionFunc); break;
+								var clonedFunc = APP.lib.Util.clone(interactionFunc);
+								funcArray.push(clonedFunc);
+								break;
 
-							default: funcArray.push(interactionFunc); break;
+							default:
+								var clonedFunc = APP.lib.Util.clone(interactionFunc);
+								funcArray.push(clonedFunc);
+								break;
 						}
 						break;
 
-					default: funcArray.push(interactionFunc); break;
+					default:
+						var clonedFunc = APP.lib.Util.clone(interactionFunc);
+						funcArray.push(clonedFunc);
+						break;
 				}
 				return funcArray;
 			}, // EO getFunctionsRule

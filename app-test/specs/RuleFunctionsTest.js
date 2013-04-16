@@ -80,13 +80,13 @@ describe('Getting rule object', function () {
 			var objFunc = funcArray[0];
 
 			runs(function () {
-				objFunc.func('P15442', 'Q12420', 0.21, objFunc)
+				objFunc.func('P15442', 'Q12420', undefined, objFunc)
 			}, 'asynchronous call (actually is an ajax request)');
 
 			waitsFor(function () {
 				return objFunc.result !== undefined;
 
-			}, 'Ajax request exceed timeout', 2000);
+			}, 'Ajax request exceed timeout', 1000);
 
 			runs(function () {
 				console.log('objFunc.alias is ...'+objFunc.alias);
@@ -95,36 +95,7 @@ describe('Getting rule object', function () {
 
 		});
 
-
 	}); // EO describe
 
-	/*
-	describe('Asynchronous Methods', function() {
-
-		var flag, value;
-		it("sets up latency configuration and receives latency", function() {
-			runs(function() {
-				flag = false;
-				value = 0;
-
-				console.log('first, value is '+value);
-				setTimeout(function() {
-					flag = true;
-				}, 500);
-			}, "an asynchronous method");
-
-			waitsFor(function() {
-				value++;
-				return flag
-			}, "x to be set to 5", 501);
-
-			runs(function () {
-				console.log('then value is '+value);
-				expect(value).toBeGreaterThan(0);
-			})
-
-		});
-	});
-*/
 
 });
