@@ -34,8 +34,22 @@ Ext.define('APP.lib.EdgeRule', {
 		 * 	threshold
 		 * 	alias
 		 * }
-		 */
+		 *
 		ruleFunctions: []
+		 */
+
+		/**
+		 * The array of objects to keep the name of the function to run and its result
+		 * and threshold, like this:
+		 * aliasObj = {
+		 * 	result
+		 * 	threshold
+		 * 	alias
+		 * }
+		 *
+		 * From the alias the actual function can be retrieved and, then, run
+		 */
+		ruleAliases: []
 	},
 
 	constructor: function (config) {

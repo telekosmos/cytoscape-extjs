@@ -44,7 +44,11 @@ Ext.define('APP.controller.Panels', {
 			'cytopanel > container > entity-lookup > textbox-btn': {
 				click: this.onClickTextbox
 			},
-			'cytopanel > container > container > container > button': {
+//			'cytopanel > container > container > container > button': {
+			'button#btnEnact': {
+				click: this.onRunGraph
+			},
+			'button#btnEnactSel': {
 				click: this.onRunGraph
 			},
 			'cytopanel > container > textbox-btn#txtBtnDisease > button': {
@@ -61,7 +65,7 @@ Ext.define('APP.controller.Panels', {
 	 * @param evOpts the event options
 	 */
 	onClickTextbox: function (comp, evOpts) {
-		console.log('got value '+evOpts.value+' for '+evOpts.meta);
+		console.log('Panels.onClickTextBox: got value '+evOpts.value+' for '+evOpts.meta);
 
 		var cytoscape = this.getCytoscape();
 		var vis = cytoscape.vis;
@@ -74,7 +78,8 @@ Ext.define('APP.controller.Panels', {
 		var nodeOpts = {
 			id: newId.toString(),
 			label: evOpts.value,
-			entity: APP.lib.CytoscapeActions.shape2entity[shape], // this is a Number
+			// entity: APP.lib.CytoscapeActions.shape2entity[shape], // this is a Number
+			entity: entityWidget.shape2entity[shape],
 			payloadValue: evOpts.value
 		};
 
@@ -85,17 +90,18 @@ Ext.define('APP.controller.Panels', {
 
 
 	onRunGraph: function (comp, evOpts) {
+		console.log('Panels.onRunGraph: got value '+evOpts.value+' for '+evOpts.meta);
 		var btnId = comp.getId();
 		var cytoscape = this.getCytoscape();
 		var vis = cytoscape.vis;
 		var edges, nodes;
 
-		if (btnId == 'btnEnact') {
+		if (btnId == 'btnEnact') { // for the whole graph
 			var nm = vis.networkModel();
 			edges = nm.data.edges; // should be an array
 			nodes = nm.data.nodes;
 		}
-		else if (btnId == 'btnEnactSel') {
+		else if (btnId == 'btnEnactSel') { // only for selected nodes (a subgraph)
 			var selModel;
 			selModel = Ext.Array.map(cytoscape.selectionModel, function (item) {
 				return item.data;

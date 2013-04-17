@@ -56,7 +56,9 @@ Ext.define('APP.lib.HypothesisRunner', {
 	/**
 	 * Gets all possible paths in the depicted graph. In the end, an array of arrays
 	 * of edges, representing all possible resolution paths in the graph, is returned.
-	 * @return {Array} the array with all discovered paths
+	 * @return {Array} the array with all discovered paths, an array of paths. As every
+	 * path is an array of edges, the returned value will be an array of arrays, like
+	 * paths = [[e1-2, e2-4], [e1-3, e3-5, e5-6], ... ]
 	 */
 	graphWalker: function () {
 		var me = this;

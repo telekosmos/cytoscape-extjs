@@ -1,7 +1,13 @@
-
-
-Ext.require(['APP.lib.CytoscapeActions', 'APP.lib.EdgeRule']);
+/**
+ * Factory for rules. A rule is the set of functions which will be executed
+ * when running a graph (or a portion of it). Actually, as when an
+ * edge is added to the cytoscape graph all functions and undefined values are set
+ * to null, no actual funcions can be set here. So, to reference de function, an
+ * alias is set for every function. When the function has to be executed, a mapper
+ * will choose the right function from the set of actual functions.
+ */
 Ext.define('APP.lib.EdgeRuleFactory', {
+	requires: ['APP.lib.EdgeRule', 'APP.lib.RuleFunctions'],
 
 	config: {},
 
@@ -35,12 +41,27 @@ Ext.define('APP.lib.EdgeRuleFactory', {
 				return functionsArray;
 			};
 
-			var newRule = Ext.create('APP.lib.EdgeRule', {
+
+			var ruleAliases = function (source, target) {
+				var srcEntity = source.entity, trgEntity = target.entity;
+				var aliasesArray;
+
+				aliasesArray = APP.lib.RuleFunctions.getAliasesFunctions(srcEntity, trgEntity);
+
+				return aliasesArray;
+			};
+
+			// var newRule = Ext.create('APP.lib.EdgeRule', {
+			var newRule = {
 				edgeSource: source,
 				edgeTarget: target,
 
-				ruleFunctions: ruleFunctions(source, target)
-			});
+				// ruleFunctions: ruleFunctions(source, target)
+				ruleAliases: ruleAliases(source, target),
+
+				result: undefined,
+				threshold: undefined
+			};
 			return newRule
 		}
 

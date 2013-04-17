@@ -67,6 +67,7 @@ Ext.define('APP.view.cytoscape.CytoScape', {
 				console.log('edges before: '+numEdges+'; and later: '+me.vis.edges().length);
 			});
 
+// TODO modify this procedure to be able to select a path of nodes, something about modifying the if's
 // PROCEDURE FOR JOINING TWO NODES /////////////
 // select event for nodes. if two nodes selected, one after another, an arrow is displayed
 			me.vis.addListener('select', 'nodes', function(ev) {
@@ -94,7 +95,7 @@ Ext.define('APP.view.cytoscape.CytoScape', {
 			});
 // EO PROCEDURE FOR JOINING TWO NODES /////////////
 
-			// a mousout should be programmed to hide the tip...
+			/* a mousout should be programmed to hide the tip...
 			me.vis.addListener('mouseover', 'nodes', function(ev) {
 				// console.log("on mouseover for "+ev.target.data.id);
 
@@ -113,7 +114,7 @@ Ext.define('APP.view.cytoscape.CytoScape', {
 				myTip.showAt([tipX, tipY]);
 				// tip.showAt([tipX, tipY]);
 			});
-
+      */
 
 			// 1. First, create a function and add it to the Visualization object.
 			me.vis["customTooltip"] = function (data) {

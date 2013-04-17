@@ -6,22 +6,22 @@ var graphModel = {
 			name: "label",
 			type: "string"
 		}, {
-			name: "foo",
+			name: "id",
 			type: "string"
 		}, {
-			name: 'payload',
+			name: 'payloadValue',
 			type: 'object'
 		}, {
 			name: 'entity',
-			type: 'string'
+			type: 'number'
 		}],
 
 		edges: [{
 			name: "label",
 			type: "string"
 		}, {
-			name: "bar",
-			type: "string"
+			name: "rule",
+			type: "object"
 		}]
 	},
 

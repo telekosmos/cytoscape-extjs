@@ -2,6 +2,7 @@
  * This is a lib with static methods to operate on a cytoscape instance
  */
 Ext.define('APP.lib.CytoscapeActions', {
+	requires: ['APP.lib.EdgeRuleFactory', 'APP.lib.EdgeRule', 'APP.lib.RuleFunctions'],
 	statics: {
 
 		GENE: 1,
@@ -13,20 +14,20 @@ Ext.define('APP.lib.CytoscapeActions', {
 		 * It converts the shape (rect, circle,...) into an entity (protein, compound, ...)
 		 */
 		shape2entity: {
-			'circle': self.PROTEIN,
-			'square': self.COMPOUND,
-			'triangle': self.DISEASE,
-			'diamond':  self.GENE
+			'circle': undefined,
+			'square': undefined,
+			'triangle': undefined,
+			'diamond':  undefined
 		},
 
 		/**
 		 * Converts from an entity string into an entity code
 		 */
 		convert2entity: {
-			'protein': self.PROTEIN,
-			'compound': self.COMPOUND,
-			'disease': self.DISEASE,
-			'gene':  self.GENE
+			'protein': undefined,
+			'compound': undefined,
+			'disease': undefined,
+			'gene':  undefined
 		},
 
 
@@ -82,14 +83,16 @@ Ext.define('APP.lib.CytoscapeActions', {
 			if (currentEdge != null)
 				return false;
 
+			var edgeRule = APP.lib.EdgeRuleFactory.createRule(nodes[0].data, nodes[1].data);
+			console.log('createEdge before edgeData...');
 			var edgeData = {
 				id: 'e'+nodeOneId.toString()+'-'+nodeTwoId.toString(),
 				directed: true,
 				source: nodeOneId.toString(),
 				target: nodeTwoId.toString(),
-				label: 'from '+nodeOneId+' to '+nodeTwoId,
 
-				rule: APP.lib.EdgeRuleFactory.createRule(nodes[0].data, nodes[1].data)
+				label: 'from '+nodeOneId+' to '+nodeTwoId,
+        rule: edgeRule
 				/*
 				nodes[0].data = {
 					id
@@ -114,6 +117,7 @@ Ext.define('APP.lib.CytoscapeActions', {
 				*/
 //				color: '#FF0300'
 			};
+			console.log('Edge AFTER edgeData...');
 
 			newEdge = vis.addEdge(edgeData, true);
 
@@ -147,6 +151,20 @@ Ext.define('APP.lib.CytoscapeActions', {
 
 			var runner = Ext.create('APP.lib.HypothesisRunner', edges, nodes);
 			var paths = runner.graphWalker();
+
+			// There are several paths in a graph, with several edges for every path
+			// and one rule for every edges, with several function every rule
+			Ext.each(paths, function(path, index, pathList) {
+				Ext.each(path, function(edge, indexBis, edgeList) {
+					var rule = edge.rule;
+					var functionObjs = rule.ruleAliases;
+
+					Ext.each(functionObjs, function(aliasObj, indexFunc, functionsList) {
+						var actualFunc = APP.lib.RuleFunctions.getFunctionFromAlias(aliasObj.alias);
+						actualFunc(rule.edgeSource.payloadValue, rule.edgeTarget.payloadValue, aliasObj.threshold, aliasObj)
+					})
+				})
+			});
 
 			runner.pathsToString();
 		},
@@ -189,6 +207,27 @@ Ext.define('APP.lib.CytoscapeActions', {
 
 	constructor: function (config) {
 		this.initConfig(config);
+		// this.superclass.constructor.call(this, config);
+
+		/**
+		 * It converts the shape (rect, circle,...) into an entity (protein, compound, ...)
+		 */
+		this.self.shape2entity = {
+			'circle': this.self.PROTEIN,
+				'square': this.self.COMPOUND,
+				'triangle': this.self.DISEASE,
+				'diamond':  this.self.GENE
+		};
+
+		/**
+		 * Converts from an entity string into an entity code
+		 */
+			this.self.convert2entity = {
+			'protein': this.self.PROTEIN,
+				'compound': this.self.COMPOUND,
+				'disease': this.self.DISEASE,
+				'gene':  this.self.GENE
+		};
 
 		return this;
 	}

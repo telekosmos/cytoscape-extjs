@@ -14,6 +14,12 @@ Ext.define('APP.view.common.EntityLookup', {
 	},
 
 
+	GENE: 1,
+	PROTEIN: 2,
+	COMPOUND: 3,
+	DISEASE: 4,
+
+
 	config: {
 		emptyText: 'nothing', // for the textbox-button's textfield
 		btnCallback: undefined, // callback button for the textbox-button's button
@@ -33,6 +39,27 @@ Ext.define('APP.view.common.EntityLookup', {
 		this.initConfig(config);
 
 		this.superclass.constructor.call(this, config);
+
+		/**
+		 * It converts the shape (rect, circle,...) into an entity (protein, compound, ...)
+		 */
+		this.shape2entity = {
+			'circle': this.PROTEIN,
+			'square': this.COMPOUND,
+			'triangle': this.DISEASE,
+			'diamond':  this.GENE
+		};
+
+		/**
+		 * Converts from an entity string into an entity code
+		 */
+		this.convert2entity = {
+			'protein': this.PROTEIN,
+			'compound': this.COMPOUND,
+			'disease': this.DISEASE,
+			'gene':  this.GENE
+		}
+
 		// console.log("EntityLookup: after constructor");
 	},
 
