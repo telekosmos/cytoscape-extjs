@@ -65,7 +65,7 @@ Ext.define('APP.lib.RuleFunctions', (function () {
 			Ext.data.JsonP.request({
 				url: url,
 				params: {
-					threshold: threshold === undefined? 0.0: threshold
+					threshold: (threshold === undefined || threshold == null)? 0.0: threshold
 				},
 
 				callback: function (opts, resp) {
@@ -173,7 +173,6 @@ Ext.define('APP.lib.RuleFunctions', (function () {
 						// var aliasFunc = APP.lib.Util.clone(interactionFunc);
 						aliasObj.alias =  interactionFunc.alias;
 						aliasArray.push(aliasObj);
-						aliasArray.push(aliasFunc);
 						break;
 				}
 

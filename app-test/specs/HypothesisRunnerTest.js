@@ -4,47 +4,65 @@ var myApp = null;
 var toType, runner;
 
 var nodes = [{
-	entity: "disease",
-	foo: null,
-	id: "1",
-	label: "headache",
-	parent: null,
-	payload: null
+	borderColor: 'red',
+	data: {
+		entity: "disease",
+		foo: null,
+		id: "1",
+		label: "headache",
+		parent: null,
+		payloadValue: null
+	}
 }, {
-	entity: "compound",
-	foo: null,
-	id: "2",
-	label: "Trimazol",
-	parent: null,
-	payload: null
+	borderColor: 'red',
+	data: {
+		entity: "compound",
+		foo: null,
+		id: "2",
+		label: "Trimazol",
+		parent: null,
+		payloadValue: null
+	}
 }, {
-	entity: "compound",
-	foo: null,
-	id: "3",
-	label: "Sintron",
-	parent: null,
-	payload: null
+	borderColor: 'red',
+	data: {
+		entity: "compound",
+		foo: null,
+		id: "3",
+		label: "Sintron",
+		parent: null,
+		payloadValue: null
+	}
 }, {
-	entity: "gene",
-	foo: null,
-	id: "4",
-	label: "PUT6",
-	parent: null,
-	payload: null
+	borderColor: 'red',
+	data: {
+		entity: "gene",
+		foo: null,
+		id: "4",
+		label: "PUT6",
+		parent: null,
+		payloadValue: null
+	}
 }, {
-	entity: "gene",
-	foo: null,
-	id: "5",
-	label: "C6Br",
-	parent: null,
-	payload: null
+	borderColor: 'red',
+	data: {
+		entity: "gene",
+		foo: null,
+		id: "5",
+		label: "C6Br",
+		parent: null,
+		payloadValue: null
+	}
 }, {
-	entity: "protein",
-	foo: null,
-	id: "6",
-	label: "GAN3",
-	parent: null,
-	payload: null
+	borderColor: 'red',
+	data: {
+		entity: "protein",
+		foo: null,
+		id: "6",
+		label: "GAN3",
+		parent: null,
+		payloadValue: null
+	}
 }];
 
 var edges = [{
@@ -111,10 +129,14 @@ describe('Searching for target information', function () {
 		})
 
 		toType = function(obj) {
-			return ({}).toString.call(obj).match(/\s([a-zA-Z]+)/)[1].toLowerCase()
+			return ({}).toString.call(obj).match(/\s([a-zA-Z]+)/)[1]; // .toLowerCase()
 		};
 
-		runner = Ext.create('APP.lib.HypothesisRunner', edges, nodes);
+		var selModel = Ext.Array.map(nodes, function (node) {
+			return node.data;
+		});
+
+		runner = Ext.create('APP.lib.HypothesisRunner', edges, selModel);
 
 //    console.log("EO beforeEach: "+TDGUI.util.LDAConstants.LDA_COMPOUND_PHARMACOLOGY_COUNT);
 	}); // EO beforeEach
@@ -224,8 +246,14 @@ describe('Searching for target information', function () {
 		it ('should be got inside an array', function () {
 			expect(runner).toBeDefined();
 
-			runner.graphWalker();
+			var thePaths = runner.graphWalker();
+			expect(thePaths).toBeDefined();
+			expect(toType(thePaths)).toBe('Array');
+			expect(thePaths.length).toBeGreaterThan(0);
+
 			var graphPaths = runner.paths;
+			expect(graphPaths).toBeDefined();
+
 			var util = Ext.create('APP.lib.Util', {});
 			var graphPathsStr;
 			console.log('Hypothesis paths:');

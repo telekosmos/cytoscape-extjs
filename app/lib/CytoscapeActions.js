@@ -2,7 +2,8 @@
  * This is a lib with static methods to operate on a cytoscape instance
  */
 Ext.define('APP.lib.CytoscapeActions', {
-	requires: ['APP.lib.EdgeRuleFactory', 'APP.lib.EdgeRule', 'APP.lib.RuleFunctions'],
+	requires: ['APP.lib.EdgeRuleFactory', 'APP.lib.EdgeRule',
+					'APP.lib.RuleFunctions', 'APP.lib.HypothesisRunner'],
 	statics: {
 
 		GENE: 1,

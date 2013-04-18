@@ -50,9 +50,14 @@ describe('EdgeRuleFactory functionality', function () {
 			expect(edgeRule).toBeDefined();
 			expect(toType(edgeRule)).toBe('Object');
 			expect(edgeRule.edgeSource.id).toBe(1);
-			expect(edgeRule.getRuleFunctions()[0].alias).toContain('interaction');
-			expect(edgeRule.getRuleFunctions().length).toBe(1);
+			expect(toType(edgeRule.ruleAliases)).toBe('Array');
+			expect(edgeRule.ruleAliases.length).toBeGreaterThan(0);
+			expect(edgeRule.ruleAliases[0].alias).toBeDefined();
+			expect(edgeRule.ruleAliases[0].alias).not.toBeNull();
+			expect(edgeRule.ruleAliases[0].result).toBeUndefined();
 
+			// expect(edgeRule.getRuleFunctions()[0].alias).toContain('interaction');
+			// expect(edgeRule.getRuleFunctions().length).toBe(1);
 		});
 
 	})

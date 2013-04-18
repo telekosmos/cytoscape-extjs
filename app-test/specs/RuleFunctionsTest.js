@@ -12,7 +12,7 @@ describe('Getting rule object', function () {
 		})
 
 		toType = function(obj) {
-			return ({}).toString.call(obj).match(/\s([a-zA-Z]+)/)[1].toLowerCase()
+			return ({}).toString.call(obj).match(/\s([a-zA-Z]+)/)[1]
 		};
 
 		//    console.log("EO beforeEach: "+TDGUI.util.LDAConstants.LDA_COMPOUND_PHARMACOLOGY_COUNT);
@@ -70,6 +70,23 @@ describe('Getting rule object', function () {
 
 		});
 
+
+		it ("a method should return an array of aliases objects", function () {
+			var entitySrc = APP.lib.CytoscapeActions.PROTEIN,
+				entityTrg = APP.lib.CytoscapeActions.PROTEIN;
+
+			// var objFunc = APP.lib.RuleFunctions.getFunctionsRule(entitySrc, entityTrg);
+			var aliasesList = APP.lib.RuleFunctions.getAliasesFunctions(entitySrc, entityTrg);
+			expect(toType(aliasesList)).toBe('Array');
+			expect(aliasesList.length).toBe(1);
+			expect(toType(aliasesList[0])).toBe('Object');
+			expect(Object.keys(aliasesList[0]).length).toBe(3); // alias, result, threshold
+			expect(aliasesList[0].result).toBeUndefined();
+			expect(aliasesList[0].alias).toBeDefined();
+			expect(aliasesList[0].alias).not.toBeNull();
+
+
+		});
 
 
 		it ('should update the function object with the function result', function() {
