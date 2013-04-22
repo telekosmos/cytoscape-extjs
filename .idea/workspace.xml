@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" readonly="true" id="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" name="Default" comment="" />
+    <list default="true" id="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/lib/CytoscapeActions.js" afterPath="$PROJECT_DIR$/app/lib/CytoscapeActions.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app-test/specs/CytoscapeActionsTest.js" afterPath="$PROJECT_DIR$/app-test/specs/CytoscapeActionsTest.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app-test/specs/HypothesisRunnerTest.js" afterPath="$PROJECT_DIR$/app-test/specs/HypothesisRunnerTest.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controller/Panels.js" afterPath="$PROJECT_DIR$/app/controller/Panels.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/lib/RuleFunctions.js" afterPath="$PROJECT_DIR$/app/lib/RuleFunctions.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app-test.js" afterPath="$PROJECT_DIR$/app-test.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test-runner.html" afterPath="$PROJECT_DIR$/test-runner.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+    </list>
     <ignored path="skelapp.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/onreadydefine.js" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1363783610262" ignored="false" />
@@ -20,22 +30,24 @@
     <file path="/CytoscapeActions.js" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1366300691933" ignored="false" />
     <file path="/app.js" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1364206482976" ignored="false" />
     <file path="/DrawingCanvas.js" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1364803462515" ignored="false" />
-    <file path="/a.dummy" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1366128217875" ignored="false" />
+    <file path="/a.dummy" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1366626197550" ignored="false" />
     <file path="/ImageList.js" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1364808875851" ignored="false" />
     <file path="/EntityLookup.js" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1366192865452" ignored="false" />
     <file path="/HypothesisRunner" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1365005208278" ignored="false" />
-    <file path="/test-runner.html" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1366277539958" ignored="false" />
-    <file path="/app-test.js" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1366109371503" ignored="false" />
+    <file path="/test-runner.html" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1366626226583" ignored="false" />
+    <file path="/app-test.js" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1366377970151" ignored="false" />
     <file path="/HypothesisRunnerTest.js" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1366294451820" ignored="false" />
     <file path="/HypothesisRunner.js" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1365499020054" ignored="false" />
     <file path="/Util.js" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1366121497034" ignored="false" />
     <file path="/EdgeRule.js" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1366210861002" ignored="false" />
     <file path="/EdgeRuleFactory.js" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1366213943487" ignored="false" />
-    <file path="/RuleFunctions.js" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1366302304765" ignored="false" />
+    <file path="/RuleFunctions.js" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1366378717386" ignored="false" />
     <file path="/RuleFunctionsTest.js" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1366278318881" ignored="false" />
     <file path="/EdgeRuleTest.js" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1366105170565" ignored="false" />
     <file path="/EdgeRuleFactoryTest.js" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1366278957676" ignored="false" />
-    <file path="/CytoscapeActionsTest.js" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1366304262847" ignored="false" />
+    <file path="/CytoscapeActionsTest.js" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1366379133891" ignored="false" />
+    <file path="/RuleFunctionEvent.js" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1366378370372" ignored="false" />
+    <file path="/Dummy.txt" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1366623798088" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,28 +67,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="RuleFunctions.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/lib/RuleFunctions.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="89" column="33" selection-start="2686" selection-end="2686" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="HypothesisRunner.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/lib/HypothesisRunner.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="74" column="62" selection-start="2244" selection-end="2244" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CytoscapeActions.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/lib/CytoscapeActions.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="150" column="4" selection-start="3708" selection-end="3708" vertical-scroll-proportion="0.0">
+            <state line="75" column="62" selection-start="2303" selection-end="2303" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -85,7 +79,54 @@
       <file leaf-file-name="HypothesisRunnerTest.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app-test/specs/HypothesisRunnerTest.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="138" column="69" selection-start="2405" selection-end="2405" vertical-scroll-proportion="0.0">
+            <state line="200" column="6" selection-start="3964" selection-end="3964" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CytoscapeActions.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/lib/CytoscapeActions.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="226" column="4" selection-start="5706" selection-end="5706" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RuleFunctions.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/lib/RuleFunctions.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="1" column="49" selection-start="1" selection-end="1" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="e#362#2061#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="test-runner.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test-runner.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="16" column="87" selection-start="862" selection-end="862" vertical-scroll-proportion="-9.73913">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="app-test.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app-test.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="17" column="29" selection-start="408" selection-end="408" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RuleOperation.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/lib/RuleOperation.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="6" column="34" selection-start="232" selection-end="232" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -94,10 +135,8 @@
       <file leaf-file-name="CytoscapeActionsTest.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app-test/specs/CytoscapeActionsTest.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="353" column="51" selection-start="10029" selection-end="10029" vertical-scroll-proportion="0.9338843">
-              <folding>
-                <element signature="e#1034#6500#0" expanded="false" />
-              </folding>
+            <state line="389" column="65" selection-start="10964" selection-end="10964" vertical-scroll-proportion="0.37135923">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -109,13 +148,17 @@
       <setting name="OPEN_NEW_TAB" value="false" />
     </FindUsagesManager>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitLogSettings">
+    <option name="myDateState">
+      <MyDateState />
+    </option>
+  </component>
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/lib/Util.js" />
-        <option value="$PROJECT_DIR$/app/view/common/EntityLookup.js" />
-        <option value="$PROJECT_DIR$/app/controller/Panels.js" />
-        <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/app/view/panels/CytoPanel.js" />
         <option value="$PROJECT_DIR$/app/lib/EdgeRule.js" />
         <option value="$PROJECT_DIR$/app/lib/HypothesisRunner.js" />
@@ -123,11 +166,15 @@
         <option value="$PROJECT_DIR$/app/lib/EdgeRuleFactory.js" />
         <option value="$PROJECT_DIR$/app-test/specs/RuleFunctionsTest.js" />
         <option value="$PROJECT_DIR$/app-test/specs/EdgeRuleFactoryTest.js" />
-        <option value="$PROJECT_DIR$/test-runner.html" />
-        <option value="$PROJECT_DIR$/app-test/specs/HypothesisRunnerTest.js" />
+        <option value="$PROJECT_DIR$/app/controller/Panels.js" />
+        <option value="$PROJECT_DIR$/app-test/specs/CytoscapeActionsTest.js" />
+        <option value="$PROJECT_DIR$/app/lib/RuleFunctionEvent.js" />
+        <option value="$PROJECT_DIR$/app/lib/RuleOperation.js" />
         <option value="$PROJECT_DIR$/app/lib/CytoscapeActions.js" />
         <option value="$PROJECT_DIR$/app/lib/RuleFunctions.js" />
-        <option value="$PROJECT_DIR$/app-test/specs/CytoscapeActionsTest.js" />
+        <option value="$PROJECT_DIR$/app-test.js" />
+        <option value="$PROJECT_DIR$/app-test/specs/HypothesisRunnerTest.js" />
+        <option value="$PROJECT_DIR$/test-runner.html" />
       </list>
     </option>
   </component>
@@ -234,7 +281,7 @@
       </profile-state>
     </entry>
   </component>
-  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
     <OptionsSetting value="true" id="Remove" />
     <OptionsSetting value="true" id="Checkout" />
@@ -260,7 +307,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -451,14 +497,15 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="recentsLimit" value="5" />
-    <property name="options.lastSelected" value="reference.settingsdialog.IDE.editor.colors.HTML" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../extjs4.0.7-lib/ext-all-debug.js" />
+    <property name="options.lastSelected" value="project.propVCSSupport.Mappings" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="FullScreen" value="false" />
     <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
@@ -567,17 +614,17 @@
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19226637" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22222222" sideWeight="0.7905478" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25018898" sideWeight="0.7905478" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20856202" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22222222" sideWeight="0.791438" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.266062" sideWeight="0.791438" order="1" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19319429" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2094522" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -642,27 +689,13 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="2" />
+      <option name="time" value="3" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="28" selection-start="486" selection-end="486" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/view/panels/CytoPanel.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="19" selection-start="373" selection-end="373" vertical-scroll-proportion="0.37139562">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/lib/CytoGraph.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.51672435">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.51672435" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/view/cytoscape/CytoScape.js">
@@ -686,13 +719,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app-test/specs/RuleFunctionsTest.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="82" column="85" selection-start="2713" selection-end="2713" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app-test/specs/EdgeRuleFactoryTest.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="56" column="61" selection-start="1676" selection-end="1676" vertical-scroll-proportion="0.8264463">
@@ -707,54 +733,75 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/lib/HypothesisRunner.js">
+    <entry file="file://$PROJECT_DIR$/app-test/specs/RuleFunctionsTest.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="74" column="62" selection-start="2244" selection-end="2244" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test-runner.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="87" selection-start="864" selection-end="864" vertical-scroll-proportion="0.0">
+        <state line="78" column="46" selection-start="2453" selection-end="2453" vertical-scroll-proportion="0.33333334">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controller/Panels.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="107" column="9" selection-start="2734" selection-end="2831" vertical-scroll-proportion="0.46280992">
+        <state line="114" column="85" selection-start="3070" selection-end="3070" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app-test/specs/HypothesisRunnerTest.js">
+    <entry file="file://$PROJECT_DIR$/app/lib/RuleOperation.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="138" column="69" selection-start="2405" selection-end="2405" vertical-scroll-proportion="0.0">
+        <state line="6" column="34" selection-start="232" selection-end="232" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/lib/CytoscapeActions.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="150" column="4" selection-start="3708" selection-end="3708" vertical-scroll-proportion="0.0">
+        <state line="226" column="4" selection-start="5706" selection-end="5706" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/lib/RuleFunctions.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="89" column="33" selection-start="2686" selection-end="2686" vertical-scroll-proportion="0.0">
+        <state line="1" column="49" selection-start="1" selection-end="1" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#362#2061#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app-test.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="29" selection-start="408" selection-end="408" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/lib/HypothesisRunner.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="75" column="62" selection-start="2303" selection-end="2303" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app-test/specs/HypothesisRunnerTest.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="200" column="6" selection-start="3964" selection-end="3964" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test-runner.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="87" selection-start="862" selection-end="862" vertical-scroll-proportion="-9.73913">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app-test/specs/CytoscapeActionsTest.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="353" column="51" selection-start="10029" selection-end="10029" vertical-scroll-proportion="0.9338843">
-          <folding>
-            <element signature="e#1034#6500#0" expanded="false" />
-          </folding>
+        <state line="389" column="65" selection-start="10964" selection-end="10964" vertical-scroll-proportion="0.37135923">
+          <folding />
         </state>
       </provider>
     </entry>

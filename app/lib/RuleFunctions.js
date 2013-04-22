@@ -1,5 +1,6 @@
 
-// Ext.require(['APP.lib.CytoscapeActions']);
+
+// Ext.require('APP.lib.RuleFunctionEvent')
 Ext.define('APP.lib.RuleFunctions', (function () {
 
 
@@ -14,53 +15,25 @@ Ext.define('APP.lib.RuleFunctions', (function () {
 		// threshold: undefined,
 		alias: 'target-target-interactions',
 
+
+
+
 		/**
 		 * Template function Object to get along a rule
 		 * Gets interactions among the two values
 		 * Call the API at localhost:<rails_port>/api/interactions/target1/target2?conf_val=val
 		 * @param {String} valSrc the accession of one target
 		 * @param {String} valTrg the accession for the other target
-		 * @param {float} threshold the confidence value to filter the interactions
-		 * @param {Object} funcObj the function object
+		 * @param {Number} threshold the confidence value to filter the interactions
+		 * @param {Object} funcObj the javascript object containing result, threshold and alias properties
 		 * @return {Object} an object with information about the found interactions
 		 */
 		func: function (valSrc, valTrg, threshold, funcObj) {
-			console.log('calling interactionFunc.interaction: '+valSrc+', '+valTrg);
+			// console.log('calling interactionFunc.interaction: '+valSrc+', '+valTrg);
 			var url = 'http://localhost:3003/api/interactions/'+valSrc+'/'+valTrg+'.jsonp';
 			/* url = (threshold === undefined || threshold == null)? url: url+
 				'?threshold='+threshold;
-      *
-			Ext.Ajax.request({
-				url: url,
-				method: 'GET',
-				params: {
-					threshold: threshold,
-					callback: callbackSuccess
-				},
-
-				callback: function (opts, success, response) {
-					console.log('ajax callback: '+success);
-				},
-
-				failure: function (resp, opts) {
-					funcObj.results = -1;
-				},
-
-				success: function (resp, opts) {
-					var jsonObj = Ext.JSON.decode(resp.body);
-					var result = jsonObj.totalCount;
-					var sumConfVal = 0;
-					if (jsonObj.totalCount > 0) {
-						Ext.each(jsonObj.interactions, function (inter, index, interactions) {
-							sumConfVal += inter.conf_value;
-						})
-						result = sumConfVal / jsonObj.totalCount;
-					}
-
-					funcObj.result = result;
-				}
-			});
-			*/
+      */
 
 			Ext.data.JsonP.request({
 				url: url,
@@ -94,9 +67,15 @@ Ext.define('APP.lib.RuleFunctions', (function () {
 		} // EO func member
 	}; // EO interactionFunc object
 
-
 // TODO functions should be kept in a store, with members result, threshold, result, func
 	var ruleFunctionsStore = [interactionFunc];
+
+
+
+	var interactionOp = Ext.create('APP.lib.RuleOperation', {});
+	var operationStore = [interactionOp];
+
+
 
 	var notImplementedYet = function (valSrc, valTrg, threshold, funcObj) {
 		console.error('Not implemented yet...');
@@ -107,10 +86,13 @@ Ext.define('APP.lib.RuleFunctions', (function () {
 
 	return {
 
-		requires: ['APP.lib.Util'],
+		requires: ['APP.lib.Util', 'APP.lib.RuleOperation'],
 
 		constructor: function () {
 			this.callParent(arguments);
+
+			var op = Ext.create('APP.lib.RuleOperation', {});
+			operationStore.push(op);
 		},
 
 		statics: {
@@ -142,10 +124,11 @@ Ext.define('APP.lib.RuleFunctions', (function () {
 
 
 			/**
-			 * Gets a list of function aliases matching with source and target entities
+			 * Gets a list of function aliases matching with source and target entities.
+			 * Note: far to be finished, as it should loop over the operations store items.
 			 * @param {Number} entitySrc
 			 * @param {Number} entityTarget
-			 * @returns {Array}
+			 * @returns {Array} an array with the function objects...
 			 */
 			getAliasesFunctions: function (entitySrc, entityTarget) {
 				var aliasArray = [];
@@ -177,6 +160,24 @@ Ext.define('APP.lib.RuleFunctions', (function () {
 				}
 
 				return aliasArray;
+			},
+
+
+			/**
+			 * It gets the operation from the alias.
+			 * @param {String} alias the alias of the operation
+			 * @return {APP.lib.RuleOperation} the operation object
+			 */
+			getOperationFromAlias: function (alias) {
+				var theFunc = null;
+				Ext.each(operationStore, function (operation, index, functionSet) {
+					if (operation.alias == alias) {
+						theFunc = operation;
+						return true;
+					}
+				});	// EO each
+
+				return theFunc;
 			},
 
 

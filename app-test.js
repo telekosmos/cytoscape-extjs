@@ -13,8 +13,9 @@ Ext.onReady(function() {
 		paths: {
 			'APP': 'app'
 		},
-		requires: ['APP.lib.HypothesisRunner', 'APP.lib.Util', 'APP.lib.RuleFunctions',
-			'APP.lib.EdgeRule', 'APP.lib.EdgeRuleFactory'],
+		requires: ['APP.lib.HypothesisRunner', 'APP.lib.Util',
+			'APP.lib.EdgeRule', 'APP.lib.EdgeRuleFactory', 'APP.lib.RuleOperation',
+			'APP.lib.RuleFunctions'],
 
 		controllers: [
 			'Panels'

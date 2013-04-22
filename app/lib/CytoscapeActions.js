@@ -164,10 +164,11 @@ Ext.define('APP.lib.CytoscapeActions', {
 						var actualFunc = APP.lib.RuleFunctions.getFunctionFromAlias(aliasObj.alias);
 						actualFunc(rule.edgeSource.payloadValue, rule.edgeTarget.payloadValue, aliasObj.threshold, aliasObj)
 					})
+
 				})
 			});
 
-			runner.pathsToString();
+//			runner.pathsToString();
 		},
 
 
@@ -223,7 +224,7 @@ Ext.define('APP.lib.CytoscapeActions', {
 		/**
 		 * Converts from an entity string into an entity code
 		 */
-			this.self.convert2entity = {
+		this.self.convert2entity = {
 			'protein': this.self.PROTEIN,
 				'compound': this.self.COMPOUND,
 				'disease': this.self.DISEASE,

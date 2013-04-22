@@ -236,7 +236,7 @@ describe('Searching for target information', function () {
 			var nodes = runner.getNodesFromIds(parents3);
 			var util = Ext.create('APP.lib.Util', {});
 
-			console.log(util.objectToString(nodes, ''));
+			// console.log(util.objectToString(nodes, ''));
 		})
 
 	});
@@ -259,7 +259,7 @@ describe('Searching for target information', function () {
 			console.log('Hypothesis paths:');
 			Ext.each(graphPaths, function (path, index, paths) {
 				graphPathsStr = util.objectToString(path, '');
-				console.log(graphPathsStr);
+				// console.log(graphPathsStr);
 				console.log('***');
 			})
 		})

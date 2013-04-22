@@ -355,11 +355,67 @@ describe('CytoscapeActions functionality', function () {
 				expect(edges[0].rule.ruleAliases[0].result).toBeGreaterThan(0);
 				console.log("this is only a result: "+edges[0].rule.ruleAliases[0].result);
 			})
+		})
 
+
+
+		it ('should use the event encapsulated class to perform the function and fire an event', function () {
+			var edgeSource = {
+				data: {
+					id: '1',
+					entity: APP.lib.CytoscapeActions.PROTEIN,
+					label: 'P15442',
+					payloadValue: 'P15442'
+				}
+			};
+			var edgeTarget = {
+				data: {
+					id: '2',
+					entity: APP.lib.CytoscapeActions.PROTEIN,
+					label: 'Q12420',
+					payloadValue: 'Q12420'
+				}
+			};
+
+			var nodes = [edgeSource, edgeTarget];
+			var edge = APP.lib.CytoscapeActions.createEdge(vis, nodes);
+			var edges = [edge.data];
+			edges[0].rule.ruleAliases[0].timestamp = Date.now().toString();
+
+			var selModel = Ext.Array.map(nodes, function (node) {
+				return node.data;
+			});
+
+
+			// CytascapeActions.runGraph mimizing
+			var runner = Ext.create('APP.lib.HypothesisRunner', edges, selModel);
+			var paths = runner.graphWalker();
+
+			// There are several paths in a graph, with several edges for every path
+			// and one rule for every edges, with several function every rule
+			Ext.each(paths, function(path, index, pathList) {
+				Ext.each(path, function(edge, indexBis, edgeList) {
+					var rule = edge.rule;
+					var aliases = rule.ruleAliases; // array of {alias, result, threshold} objects
+
+					Ext.each(aliases, function(aliasObj, indexFunc, functionsList) {
+						var opObj = APP.lib.RuleFunctions.getOperationFromAlias(aliasObj.alias);
+						opObj.on('operationComplete', function (result) {
+							alert('operationComplete:'+aliasObj.result+ ' vs '+result);
+						});
+						opObj.operation(rule.edgeSource.payloadValue,
+											rule.edgeTarget.payloadValue, aliasObj.threshold, aliasObj);
+
+						// actualFunc(rule.edgeSource.payloadValue, rule.edgeTarget.payloadValue, aliasObj.threshold, aliasObj)
+					})
+				})
+			}); // EO first Ext.each
+
+			console.log("test se finé");
+		})
 
 			// var runner = Ext.create('APP.lib.HypothesisRunner', edges, selModel);
 			// var paths = runner.graphWalker();
-		});
 	})
 
 })

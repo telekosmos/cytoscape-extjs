@@ -111,9 +111,12 @@ Ext.define('APP.controller.Panels', {
 			nodes = selModel;
 			edges = nm.data.edges;
 		}
-
+		// functionEvent = APP.lib.RuleFunctions.getFunctionFromAlias(alias)
+		// functionEvent.addListener('operationComplete', this.onOperationComplete, this)
 		APP.lib.CytoscapeActions.runGraph(vis, nodes, edges);
 	},
+
+
 
 	onDiseaseBtnClick: function (c, ev) {
 		var container = c.ownerCt;
