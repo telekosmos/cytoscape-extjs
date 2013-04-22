@@ -265,6 +265,11 @@ Ext.define('APP.view.panels.CytoPanel', {
 
 					id: 'btnEnactSel'
 				}]
+			}, {
+				xtype: 'label',
+				id: 'labelResult',
+				text: 'result: labelresult',
+				margin: '0 0 0 10'
 			}]
 		} // EO container
 		] // EO UPPER container items
