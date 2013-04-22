@@ -2,7 +2,7 @@
  * This is a lib with static methods to operate on a cytoscape instance
  */
 Ext.define('APP.lib.CytoscapeActions', {
-	requires: ['APP.lib.EdgeRuleFactory', 'APP.lib.EdgeRule',
+	requires: ['APP.lib.EdgeRuleFactory', 'APP.lib.EdgeRule', 'APP.lib.RuleOperation',
 					'APP.lib.RuleFunctions', 'APP.lib.HypothesisRunner'],
 	statics: {
 
@@ -158,13 +158,34 @@ Ext.define('APP.lib.CytoscapeActions', {
 			Ext.each(paths, function(path, index, pathList) {
 				Ext.each(path, function(edge, indexBis, edgeList) {
 					var rule = edge.rule;
-					var functionObjs = rule.ruleAliases;
+					var aliases = rule.ruleAliases;
 
+					Ext.each(aliases, function(aliasObj, indexFunc, functionsList) {
+						var opObj = APP.lib.RuleFunctions.getOperationFromAlias(aliasObj.alias);
+						opObj.on('operationComplete', function (result) {
+							console.log('operationComplete:'+aliasObj.result+ ' vs '+result);
+							var labelResult = Ext.getCmp('labelResult');
+							if (labelResult == null)
+								alert ('No component was found');
+
+							else if (labelResult === undefined)
+								alert('A "class" was found...'+labelResult.toString());
+
+							else // labelResult is an object
+								labelResult.setText('result: '+aliasObj.result);
+
+						});
+						opObj.operation(rule.edgeSource.payloadValue,
+							rule.edgeTarget.payloadValue, aliasObj.threshold, aliasObj);
+
+						// actualFunc(rule.edgeSource.payloadValue, rule.edgeTarget.payloadValue, aliasObj.threshold, aliasObj)
+					})
+					/*
 					Ext.each(functionObjs, function(aliasObj, indexFunc, functionsList) {
 						var actualFunc = APP.lib.RuleFunctions.getFunctionFromAlias(aliasObj.alias);
 						actualFunc(rule.edgeSource.payloadValue, rule.edgeTarget.payloadValue, aliasObj.threshold, aliasObj)
 					})
-
+          */
 				})
 			});
 

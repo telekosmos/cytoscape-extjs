@@ -2,14 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/view/panels/CytoPanel.js" afterPath="$PROJECT_DIR$/app/view/panels/CytoPanel.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/lib/CytoscapeActions.js" afterPath="$PROJECT_DIR$/app/lib/CytoscapeActions.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app-test/specs/CytoscapeActionsTest.js" afterPath="$PROJECT_DIR$/app-test/specs/CytoscapeActionsTest.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app-test/specs/HypothesisRunnerTest.js" afterPath="$PROJECT_DIR$/app-test/specs/HypothesisRunnerTest.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controller/Panels.js" afterPath="$PROJECT_DIR$/app/controller/Panels.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/lib/RuleFunctions.js" afterPath="$PROJECT_DIR$/app/lib/RuleFunctions.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app-test.js" afterPath="$PROJECT_DIR$/app-test.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test-runner.html" afterPath="$PROJECT_DIR$/test-runner.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="skelapp.iws" />
@@ -17,7 +11,7 @@
     <file path="/onreadydefine.js" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1363783610262" ignored="false" />
     <file path="/a.js" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1363955452125" ignored="false" />
     <file path="/index.html" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1366197862454" ignored="false" />
-    <file path="/CytoPanel.js" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1365440516949" ignored="false" />
+    <file path="/CytoPanel.js" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1366629173777" ignored="false" />
     <file path="/MainCenter.js" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1363784386394" ignored="false" />
     <file path="/Panels.js" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1366192295276" ignored="false" />
     <file path="/CytoScape.js" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1366111382166" ignored="false" />
@@ -27,7 +21,7 @@
     <file path="/a.coffee" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1363955457644" ignored="false" />
     <file path="/a.xml" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1363955484641" ignored="false" />
     <file path="/CytoscapeControls.js" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1363964002283" ignored="false" />
-    <file path="/CytoscapeActions.js" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1366300691933" ignored="false" />
+    <file path="/CytoscapeActions.js" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1366630551961" ignored="false" />
     <file path="/app.js" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1364206482976" ignored="false" />
     <file path="/DrawingCanvas.js" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1364803462515" ignored="false" />
     <file path="/a.dummy" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1366626197550" ignored="false" />
@@ -76,20 +70,22 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="HypothesisRunnerTest.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app-test/specs/HypothesisRunnerTest.js">
+      <file leaf-file-name="CytoscapeActions.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/lib/CytoscapeActions.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="200" column="6" selection-start="3964" selection-end="3964" vertical-scroll-proportion="0.0">
+            <state line="166" column="44" selection-start="4517" selection-end="4517" vertical-scroll-proportion="0.59504133">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CytoscapeActions.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/lib/CytoscapeActions.js">
+      <file leaf-file-name="CytoPanel.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/view/panels/CytoPanel.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="226" column="4" selection-start="5706" selection-end="5706" vertical-scroll-proportion="0.0">
-              <folding />
+            <state line="271" column="25" selection-start="5046" selection-end="5046" vertical-scroll-proportion="0.0">
+              <folding>
+                <marker date="1366629189000" expanded="false" signature="3169:3223" placeholder="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -105,19 +101,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="test-runner.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test-runner.html">
+      <file leaf-file-name="Panels.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/controller/Panels.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="87" selection-start="862" selection-end="862" vertical-scroll-proportion="-9.73913">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="app-test.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app-test.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="29" selection-start="408" selection-end="408" vertical-scroll-proportion="0.0">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -127,15 +114,6 @@
         <entry file="file://$PROJECT_DIR$/app/lib/RuleOperation.js">
           <provider selected="true" editor-type-id="text-editor">
             <state line="6" column="34" selection-start="232" selection-end="232" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CytoscapeActionsTest.js" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app-test/specs/CytoscapeActionsTest.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="389" column="65" selection-start="10964" selection-end="10964" vertical-scroll-proportion="0.37135923">
               <folding />
             </state>
           </provider>
@@ -159,7 +137,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/view/panels/CytoPanel.js" />
         <option value="$PROJECT_DIR$/app/lib/EdgeRule.js" />
         <option value="$PROJECT_DIR$/app/lib/HypothesisRunner.js" />
         <option value="$PROJECT_DIR$/app/view/cytoscape/CytoScape.js" />
@@ -170,11 +147,12 @@
         <option value="$PROJECT_DIR$/app-test/specs/CytoscapeActionsTest.js" />
         <option value="$PROJECT_DIR$/app/lib/RuleFunctionEvent.js" />
         <option value="$PROJECT_DIR$/app/lib/RuleOperation.js" />
-        <option value="$PROJECT_DIR$/app/lib/CytoscapeActions.js" />
         <option value="$PROJECT_DIR$/app/lib/RuleFunctions.js" />
         <option value="$PROJECT_DIR$/app-test.js" />
         <option value="$PROJECT_DIR$/app-test/specs/HypothesisRunnerTest.js" />
         <option value="$PROJECT_DIR$/test-runner.html" />
+        <option value="$PROJECT_DIR$/app/view/panels/CytoPanel.js" />
+        <option value="$PROJECT_DIR$/app/lib/CytoscapeActions.js" />
       </list>
     </option>
   </component>
@@ -326,38 +304,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="cytoapp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="skelapp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cytoapp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app-test" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="skelapp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cytoapp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app-test" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="specs" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -693,25 +639,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/lib/CytoGraph.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.51672435" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/view/cytoscape/CytoScape.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="69" column="0" selection-start="1967" selection-end="1967" vertical-scroll-proportion="0.28950405">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/lib/EdgeRule.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="55" column="63" selection-start="1557" selection-end="1557" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app-test/specs/EdgeRuleTest.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="59" column="26" selection-start="1572" selection-end="1572" vertical-scroll-proportion="0.18181819">
@@ -740,23 +667,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controller/Panels.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="114" column="85" selection-start="3070" selection-end="3070" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/lib/RuleOperation.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="6" column="34" selection-start="232" selection-end="232" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/lib/CytoscapeActions.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="226" column="4" selection-start="5706" selection-end="5706" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -767,13 +680,6 @@
           <folding>
             <element signature="e#362#2061#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app-test.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="29" selection-start="408" selection-end="408" vertical-scroll-proportion="0.0">
-          <folding />
         </state>
       </provider>
     </entry>
@@ -791,6 +697,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app-test/specs/CytoscapeActionsTest.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="409" column="12" selection-start="11447" selection-end="11966" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/test-runner.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="16" column="87" selection-start="862" selection-end="862" vertical-scroll-proportion="-9.73913">
@@ -798,9 +711,48 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app-test/specs/CytoscapeActionsTest.js">
+    <entry file="file://$PROJECT_DIR$/app/controller/Panels.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="389" column="65" selection-start="10964" selection-end="10964" vertical-scroll-proportion="0.37135923">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app-test.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="29" selection-start="408" selection-end="408" vertical-scroll-proportion="0.28434888">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/view/panels/MainCenter.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-1.6115702">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/view/panels/ImageList.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/view/panels/CytoPanel.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="271" column="25" selection-start="5046" selection-end="5046" vertical-scroll-proportion="0.0">
+          <folding>
+            <marker date="1366629189000" expanded="false" signature="3169:3223" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/lib/CytoscapeActions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="166" column="44" selection-start="4517" selection-end="4517" vertical-scroll-proportion="0.59504133">
           <folding />
         </state>
       </provider>
